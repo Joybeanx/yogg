@@ -1,0 +1,123 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.joybean.yogg.mapper.WebsiteMapper">
+    <resultMap
+            type="Website"
+            id="WebsiteMap"/>
+
+    <insert id="replaceWebsite">
+        insert into website
+        (url)
+        values
+        <foreach
+                collection="websites"
+                item="website"
+                index="index"
+                separator=",">
+            (#{website.url})
+        </foreach>
+    </insert>
+
+    <select
+            id="queryWebsite"
+            resultMap="WebsiteMap">
+        select
+        url
+        from
+        website
+        <if test="pagination != null">
+            limit #{pagination.offset},#{pagination.limit}
+        </if>
+    </select>
+
+    <select
+            id="queryWebsiteUrl"
+            resultType="java.lang.String">
+        select
+        url
+        from
+        website
+        <if test="pagination != null">
+            limit #{pagination.offset},#{pagination.limit}
+        </if>
+    </select>
+
+    <insert id="insertWebsite">
+        insert into website
+        (url)
+        values
+        <foreach
+                collection="websites"
+                item="website"
+                index="index"
+                separator=",">
+            (#{website.url})
+        </foreach>
+    </insert>
+
+    <select
+            id="countWebsite"
+            resultType="java.lang.Integer">
+        select count(1) from website
+    </select>
+
+
+    <insert id="replaceKeyWebsite">
+        replace into key_website
+        (url)
+        values
+        <foreach
+                collection="websites"
+                item="website"
+                index="index"
+                separator=",">
+            (#{website.url})
+        </foreach>
+    </insert>
+
+    <select
+            id="queryKeyWebsite"
+            resultMap="WebsiteMap">
+        select
+        url
+        from
+        key_website
+        <if test="pagination != null">
+            limit #{pagination.offset},#{pagination.limit}
+        </if>
+    </select>
+
+    <select
+            id="queryKeyWebsiteUrl"
+            resultType="java.lang.String">
+        select
+        url
+        from
+        key_website
+        <if test="pagination != null">
+            limit #{pagination.offset},#{pagination.limit}
+        </if>
+    </select>
+
+    <insert id="insertKeyWebsite">
+        insert into key_website
+        (url)
+        values
+        <foreach
+                collection="websites"
+                item="website"
+                index="index"
+                separator=",">
+            (#{website.url})
+        </foreach>
+    </insert>
+
+    <select
+            id="countKeyWebsite"
+            resultType="java.lang.Integer">
+        select count(1) from key_website
+    </select>
+
+</mapper>

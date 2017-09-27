@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<VBox minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joybean.yogg.task.controller.ScheduledTaskController">
+    <children>
+        <Pane>
+            <children>
+                <Button layoutX="7.0" layoutY="29.0" mnemonicParsing="false" onAction="#newTask">
+                    <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="/view/image/add.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button layoutX="47.0" layoutY="29.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="34.0">
+                    <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="/view/image/refresh.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </Pane>
+        <TableView prefHeight="221.0" prefWidth="500.0">
+            <columns>
+                <TableColumn prefWidth="91.0" text="Task Name" />
+                <TableColumn prefWidth="84.0" text="Target Phone Number" />
+                <TableColumn prefWidth="77.0" text="Cron Expression" />
+                <TableColumn prefWidth="109.0" text="Previous Execute Time" />
+                <TableColumn minWidth="0.0" prefWidth="115.0" text="Next Execute Time" />
+                <TableColumn minWidth="0.0" prefWidth="76.0" text="Status" />
+                <TableColumn minWidth="0.0" prefWidth="47.0" text="Action" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

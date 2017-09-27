@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_lVgCoHB_Eeecd-9FOabMug" name="RootElement">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_lXWcwHB_Eeecd-9FOabMug" name="StateMachineMain">
+    <region xmi:type="uml:Region" xmi:id="_lZYdEHB_Eeecd-9FOabMug" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_D2GfMHLmEeeGQNs7B5WvsA" source="_lDEZYHCAEeecd-9FOabMug" target="_mWYjwHLjEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_pHrQAH6yEee7-5JSJdFSgQ" event="_P6CWIH6iEee7-5JSJdFSgQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_214NUHLpEeeGQNs7B5WvsA" source="_kHPJ8JsXEeeNXopH9A5gIg" target="_lDEZYHCAEeecd-9FOabMug"/>
+      <transition xmi:type="uml:Transition" xmi:id="_hIuu8HLqEeeGQNs7B5WvsA" source="_mWYjwHLjEeeGQNs7B5WvsA" target="_K0-LQHLlEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_31lpMH6iEee7-5JSJdFSgQ" event="_SAoHYHLqEeeGQNs7B5WvsA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_dw1YQHOpEeeGQNs7B5WvsA" source="_2vjasH9REee7-5JSJdFSgQ" target="_AGQssHaREeelQt7RCmbIqg"/>
+      <transition xmi:type="uml:Transition" xmi:id="_8shkAHQPEeeGQNs7B5WvsA" source="_fDCFkH9SEee7-5JSJdFSgQ" target="_TjsO4HLlEeeGQNs7B5WvsA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_MS1iYHSQEeeGQNs7B5WvsA" source="_mWYjwHLjEeeGQNs7B5WvsA" target="_BU-0AHLrEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_ICseEH6wEee7-5JSJdFSgQ" event="_dkzZcXSQEeeGQNs7B5WvsA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_Nb9toHSQEeeGQNs7B5WvsA" source="_K0-LQHLlEeeGQNs7B5WvsA" target="_BU-0AHLrEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_kfxngHSQEeeGQNs7B5WvsA" event="_dkzZcXSQEeeGQNs7B5WvsA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_QR6AAHSQEeeGQNs7B5WvsA" source="_TjsO4HLlEeeGQNs7B5WvsA" target="_BU-0AHLrEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_l2kbUHSQEeeGQNs7B5WvsA" event="_dkzZcXSQEeeGQNs7B5WvsA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_WAbWkHaUEeelQt7RCmbIqg" guard="_spTn8HaUEeelQt7RCmbIqg" source="_AGQssHaREeelQt7RCmbIqg" target="_mWYjwHLjEeeGQNs7B5WvsA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_spTn8HaUEeelQt7RCmbIqg">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_spTn8XaUEeelQt7RCmbIqg">
+            <language>bean</language>
+            <body>hasNextTargetGuard</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_xek5YHqoEeelQt7RCmbIqg" source="_lDEZYHCAEeecd-9FOabMug" target="_BU-0AHLrEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_GTX1gH6wEee7-5JSJdFSgQ" event="_dkzZcXSQEeeGQNs7B5WvsA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_7s6xAH6rEee7-5JSJdFSgQ" source="_AGQssHaREeelQt7RCmbIqg" target="_2WQ1YH6rEee7-5JSJdFSgQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_QiaNYH9VEee7-5JSJdFSgQ" source="_up3loH9UEee7-5JSJdFSgQ" target="_BU-0AHLrEeeGQNs7B5WvsA"/>
+      <subvertex xmi:type="uml:State" xmi:id="_lDEZYHCAEeecd-9FOabMug" name="INIT_WEB_CLIENT">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_FHjQQHCGEeecd-9FOabMug" name="initWebClientAction">
+          <language>bean</language>
+          <body>initWebClientAction</body>
+        </entry>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_mWYjwHLjEeeGQNs7B5WvsA" name="VISIT_TARGET_PAGE" submachine="_Dyk5sHHsEeeGQNs7B5WvsA"/>
+      <subvertex xmi:type="uml:State" xmi:id="_K0-LQHLlEeeGQNs7B5WvsA" name="FILL_IN_FORM" submachine="_xjJCEHSOEeeGQNs7B5WvsA">
+        <connection xmi:type="uml:ConnectionPointReference" xmi:id="_fDCFkH9SEee7-5JSJdFSgQ" name="FORM_FILLED_IN" exit="_lv5mMH9SEee7-5JSJdFSgQ"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_TjsO4HLlEeeGQNs7B5WvsA" name="SEND_SMS" submachine="_Rqa-AHISEeeGQNs7B5WvsA">
+        <connection xmi:type="uml:ConnectionPointReference" xmi:id="_2vjasH9REee7-5JSJdFSgQ" name="SEND_SUCCESS" exit="_rqV2QH9QEee7-5JSJdFSgQ"/>
+        <connection xmi:type="uml:ConnectionPointReference" xmi:id="_up3loH9UEee7-5JSJdFSgQ" name="SEND_FAILURE" exit="_HKXcwH9REee7-5JSJdFSgQ"/>
+      </subvertex>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_BU-0AHLrEeeGQNs7B5WvsA" name="FAILURE"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_AGQssHaREeelQt7RCmbIqg" name="HAS_NEXT_TARGET" kind="choice"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_2WQ1YH6rEee7-5JSJdFSgQ" name="SUCCESS"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_kHPJ8JsXEeeNXopH9A5gIg" name="START"/>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_Dyk5sHHsEeeGQNs7B5WvsA" name="StateMachineVisitTargetPage" submachineState="_mWYjwHLjEeeGQNs7B5WvsA">
+    <region xmi:type="uml:Region" xmi:id="_H-b2IHHsEeeGQNs7B5WvsA" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_Yr-SAHIOEeeGQNs7B5WvsA" source="_YUzPgHILEeeGQNs7B5WvsA" target="_r64zYHINEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_CBEzAHOxEeeGQNs7B5WvsA" event="_pPkx0HFLEeeYqJcwoQP2hQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_H2fecHIVEeeGQNs7B5WvsA" source="_SiwRAHIOEeeGQNs7B5WvsA" target="_YUzPgHILEeeGQNs7B5WvsA"/>
+      <subvertex xmi:type="uml:State" xmi:id="_YUzPgHILEeeGQNs7B5WvsA" name="VISIT_HOME_PAGE">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_hEf4oHINEeeGQNs7B5WvsA" name="visitHomePageAction">
+          <language>bean</language>
+          <body>visitHomePageAction</body>
+        </entry>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_r64zYHINEeeGQNs7B5WvsA" name="REDIRECT_TO_TARGET_PAGE">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_2JptcHINEeeGQNs7B5WvsA" name="redirectToTargetPageAction">
+          <language>bean</language>
+          <body>redirectToTargetPageAction</body>
+        </entry>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_SiwRAHIOEeeGQNs7B5WvsA"/>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_xjJCEHSOEeeGQNs7B5WvsA" name="StateMachineFillInForm" submachineState="_K0-LQHLlEeeGQNs7B5WvsA">
+    <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_lv5mMH9SEee7-5JSJdFSgQ" name="FORM_FILLED_IN" kind="exitPoint"/>
+    <region xmi:type="uml:Region" xmi:id="_0r-bQHSOEeeGQNs7B5WvsA" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_YJ7hoHSPEeeGQNs7B5WvsA" source="_-6gr0HSOEeeGQNs7B5WvsA" target="_AApNcHSPEeeGQNs7B5WvsA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_aMM7YHSPEeeGQNs7B5WvsA" source="_AApNcHSPEeeGQNs7B5WvsA" target="_KasKcHSPEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_0t0H4IjSEeeQLuL2AKZlIQ" event="_8cmx8HFMEeeYqJcwoQP2hQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_mtvugH9SEee7-5JSJdFSgQ" source="_KasKcHSPEeeGQNs7B5WvsA" target="_lv5mMH9SEee7-5JSJdFSgQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_pR_M4H9SEee7-5JSJdFSgQ" event="_R41xoH9REee7-5JSJdFSgQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_sMrcYH9SEee7-5JSJdFSgQ" source="_KasKcHSPEeeGQNs7B5WvsA" target="_lv5mMH9SEee7-5JSJdFSgQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_urMtQH9SEee7-5JSJdFSgQ" event="_8hkKcHFMEeeYqJcwoQP2hQ"/>
+      </transition>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_-6gr0HSOEeeGQNs7B5WvsA" name=""/>
+      <subvertex xmi:type="uml:State" xmi:id="_AApNcHSPEeeGQNs7B5WvsA" name="INPUT_MOBILE">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_FFEwoHSPEeeGQNs7B5WvsA" name="inputPhoneNumberAction">
+          <language>bean</language>
+          <body>inputPhoneNumberAction</body>
+        </entry>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_KasKcHSPEeeGQNs7B5WvsA" name="BREAK_CAPTCHA">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_JezDYHbTEeelQt7RCmbIqg" name="tryBreakCaptchaAction">
+          <language>bean</language>
+          <body>tryBreakCaptchaAction</body>
+        </entry>
+      </subvertex>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_Rqa-AHISEeeGQNs7B5WvsA" name="StateMachineSendSMS" submachineState="_TjsO4HLlEeeGQNs7B5WvsA">
+    <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_rqV2QH9QEee7-5JSJdFSgQ" name="SEND_SUCCESS" kind="exitPoint"/>
+    <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_HKXcwH9REee7-5JSJdFSgQ" name="SEND_FALILURE" kind="exitPoint"/>
+    <region xmi:type="uml:Region" xmi:id="_E7uoYHITEeeGQNs7B5WvsA" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_Q2LIcHLUEeeGQNs7B5WvsA" source="_IiRYkHLUEeeGQNs7B5WvsA" target="_kQLfgHLTEeeGQNs7B5WvsA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_2HivcHSQEeeGQNs7B5WvsA" source="_rI1mMHSQEeeGQNs7B5WvsA" target="_l2Lo8HQQEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_QQsGkHbWEeelQt7RCmbIqg" event="_8hkKcHFMEeeYqJcwoQP2hQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="__cSewHU0EeelQt7RCmbIqg" source="_kQLfgHLTEeeGQNs7B5WvsA" target="_rI1mMHSQEeeGQNs7B5WvsA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_X5SZIHU1EeelQt7RCmbIqg" event="_C7GvsHQcEeeGQNs7B5WvsA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_vsjugH9QEee7-5JSJdFSgQ" source="_l2Lo8HQQEeeGQNs7B5WvsA" target="_rqV2QH9QEee7-5JSJdFSgQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_ojj6YIAzEeevV4WJjo59wg" event="_8nAEEHFMEeeYqJcwoQP2hQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_A0e4wH9REee7-5JSJdFSgQ" source="_kQLfgHLTEeeGQNs7B5WvsA" target="_rqV2QH9QEee7-5JSJdFSgQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_Cna2AH9REee7-5JSJdFSgQ" event="_8nAEEHFMEeeYqJcwoQP2hQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_MZZtcH9REee7-5JSJdFSgQ" source="_rI1mMHSQEeeGQNs7B5WvsA" target="_HKXcwH9REee7-5JSJdFSgQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_YIP6MH9REee7-5JSJdFSgQ" event="_R41xoH9REee7-5JSJdFSgQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_5F98wIAzEeevV4WJjo59wg" source="_l2Lo8HQQEeeGQNs7B5WvsA" target="_HKXcwH9REee7-5JSJdFSgQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_7WVc4IAzEeevV4WJjo59wg" event="_C7GvsHQcEeeGQNs7B5WvsA"/>
+      </transition>
+      <subvertex xmi:type="uml:State" xmi:id="_kQLfgHLTEeeGQNs7B5WvsA" name="CLICK_SEND_BUTTON">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_GYBukHLUEeeGQNs7B5WvsA" name="clickSendButtonAction">
+          <language>bean</language>
+          <body>clickSendButtonAction</body>
+        </entry>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_IiRYkHLUEeeGQNs7B5WvsA" name=""/>
+      <subvertex xmi:type="uml:State" xmi:id="_l2Lo8HQQEeeGQNs7B5WvsA" name="RESEND">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_uLOZkHQWEeeGQNs7B5WvsA" name="resendAction">
+          <language>bean</language>
+          <body>resendAction</body>
+        </entry>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_rI1mMHSQEeeGQNs7B5WvsA" name="BREAK_SHOWUP_CAPTCHA">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_kCaPgHbUEeelQt7RCmbIqg" name="tryBreakCaptchaAction">
+          <language>bean</language>
+          <body>tryBreakCaptchaAction</body>
+        </entry>
+      </subvertex>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_P5oGcH6iEee7-5JSJdFSgQ" name="WEB_CLIENT_INITIATED"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_P6CWIH6iEee7-5JSJdFSgQ" name="SignalEvent_WEB_CLIENT_INITIATED" signal="_P5oGcH6iEee7-5JSJdFSgQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_pPkKwHFLEeeYqJcwoQP2hQ" name="HOME_PAGE_LOADED"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_pPkx0HFLEeeYqJcwoQP2hQ" name="SignalEvent_HOME_PAGE_LOADED" signal="_pPkKwHFLEeeYqJcwoQP2hQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_SAngUHLqEeeGQNs7B5WvsA" name="TARGET_PAGE_LOADED"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_SAoHYHLqEeeGQNs7B5WvsA" name="SignalEvent_TARGET_PAGE_LOADED" signal="_SAngUHLqEeeGQNs7B5WvsA"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_8cmK4HFMEeeYqJcwoQP2hQ" name="PHONE_NUMBER_INPUT"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_8cmx8HFMEeeYqJcwoQP2hQ" name="SignalEvent_PHONE_NUMBER_INPUT" signal="_8cmK4HFMEeeYqJcwoQP2hQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_HtShsH6jEee7-5JSJdFSgQ" name="FORM_FILLED_IN"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_HtShsX6jEee7-5JSJdFSgQ" name="SignalEvent_FORM_FILLED_IN" signal="_HtShsH6jEee7-5JSJdFSgQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_8hjjYHFMEeeYqJcwoQP2hQ" name="CAPTCHA_TEXT_INPUT"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_8hkKcHFMEeeYqJcwoQP2hQ" name="SignalEvent_CAPTCHA_TEXT_INPUT" signal="_8hjjYHFMEeeYqJcwoQP2hQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_R40jgH9REee7-5JSJdFSgQ" name="CAPTCHA_NONEXISTENT"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_R41xoH9REee7-5JSJdFSgQ" name="SignalEvent_CAPTCHA_NONEXISTENT" signal="_R40jgH9REee7-5JSJdFSgQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_8m_dAHFMEeeYqJcwoQP2hQ" name="SEND_SUCCESS"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_8nAEEHFMEeeYqJcwoQP2hQ" name="SignalEvent_SEND_SUCCESS" signal="_8m_dAHFMEeeYqJcwoQP2hQ"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_C7FhkHQcEeeGQNs7B5WvsA" name="SEND_FAILURE"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_C7GvsHQcEeeGQNs7B5WvsA" name="SignalEvent_SEND_FAILURE" signal="_C7FhkHQcEeeGQNs7B5WvsA"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_dkzZcHSQEeeGQNs7B5WvsA" name="FAILURE"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_dkzZcXSQEeeGQNs7B5WvsA" name="SignalEvent_FAILURE" signal="_dkzZcHSQEeeGQNs7B5WvsA"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_4hv7IHHqEeeGQNs7B5WvsA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4hxJQHHqEeeGQNs7B5WvsA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>

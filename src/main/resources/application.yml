@@ -1,0 +1,105 @@
+#Target mobile phone numbers
+targets:
+       - 13000000000
+#Number of threads used for sending SMS
+threads: 20
+#Timeout of sending SMS,90000 ms by default
+timeout: 90000
+#Retry attempt times if failed,not effective currently
+retry-attempts: 3
+#Proxy type:DIRECT,HTTP,SOCKS
+proxy:
+        type: DIRECT
+        host:
+        port:
+
+
+#Some xpaths of necessary element in the page used for sending SMS
+page-element-locators:
+        #XPaths for finding a link of target page,such as XPath of register link on home page
+        redirect-link-xpaths:
+                - //a[text()[contains(.,"注册")]]
+                - //input[@type="button" and contains(@value,"注册")]
+                - //*[text()[contains(.,"注册")]]
+        #XPaths for finding phone number input on target page
+        phone-number-input-xpaths:
+                - //input[contains(@placeholder,"手机") or contains(@placeholder,"电话") or @*[contains(lower-case(.),"phone")] or @*[contains(lower-case(.),"mobile")]]
+                - //*[(name()='label' or name()='span' or name()='div' or name()='th') and text()[contains(.,"手机")] or text()[contains(.,"电话")]]//following::input
+        #XPaths for finding captcha image on target page
+        captcha-image-xpaths:
+                - //img[string-length(@src)>0 and (@*[contains(lower-case(.),"captcha")] or @*[contains(.,"验证码")] or @*[contains(lower-case(.),"auth")] or @*[contains(lower-case(.),"verify")])]
+        #XPaths for finding a captcha input on target page
+        captcha-input-xpaths:
+                - //img[string-length(@src)>0 and (@*[contains(lower-case(.),"captcha")] or @*[contains(.,"验证码")] or @*[contains(lower-case(.),"auth")] or @*[contains(lower-case(.),"verify")])]//preceding::input[1]
+                - //img[string-length(@src)>0 and (@*[contains(lower-case(.),"captcha")] or @*[contains(.,"验证码")] or @*[contains(lower-case(.),"auth")] or @*[contains(lower-case(.),"verify")])]//following::input
+        #XPaths for finding a sending SMS button on target page
+        send-button-xpaths:
+                - //input[@type="button" and (contains(@value,"验证码") or contains(@value,"校验码") or contains(@value,"短信") or contains(@value,"激活码") or contains(@value,"随机码") or contains(@value,"获取") or contains(@value,"动态密码") )]
+                - //*[(self::button or self::a) and text()[contains(.,"验证码") or contains(.,"校验码") or contains(.,"短信") or contains(.,"激活码") or contains(.,"随机码") or contains(.,"获取") or contains(@value,"动态密码")]]
+                - //*[text()[contains(.,"验证码") or contains(.,"校验码") or contains(.,"短信") or contains(.,"激活码") or contains(.,"随机码") or contains(.,"获取") or contains(@value,"动态密码")]]
+        #XPaths for finding a confirm button on target page after clicking sending button
+        confirm-button-xpaths:
+                    - //input[@type="button" and (contains(@value,"确定")  or contains(@value,"确认"))]
+                    - //*[(self::button or self::a) and text()[contains(.,"确定") or contains(.,"确认")]]
+                    - //*[text()[contains(.,"确定") or contains(.,"确认")]]
+
+#Data source type of website:CRAWLER,FILE,DATABASE
+data-source-type: CRAWLER
+
+
+file-datasource:
+       #Path of website file
+       file-path: C:/Users/Administrator/Desktop/websites.txt
+
+crawler-datasource:
+        #Urls from which crawler start to search for websites
+        start-urls:
+                - https://www.hao123.com/
+        #Number of crawler threads
+        threads: 20
+        #Timeout for crawler downloader,30000 ms default
+        timeout: 30000
+        #Retry times when download failed,3 by default
+        retry-times: 3
+        #Retry times of adding back to scheduler and downloading again when download failed,1 by default
+        cycle-retry-times: 1
+        #Interval between the processing of two pages,500 ms by default
+        sleep-time: 500
+        #Retry sleep time when download failed, 60000 ms by default
+        retry-sleep-time: 60000
+
+#Databse configuration,only needed when data source type is DATABASE,please ensure sql script has been executed in the database and your data has been imported to website table
+database-datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url:
+        username:
+        password:
+        initial-size: 10
+        max-total: 20
+        min-idle: 5
+        time-between-eviction-runs-millis: 60000
+        max-wait-millis: 10000
+
+#Mybatis configurations,only needed when data source type is DATABASE
+mybatis:
+        config-location: classpath:mybatis-config.xml
+
+#A local report file will be created after a task completes,the placeholder in the file name format is the task id
+report-file-name-format: report/report_%s.json
+#A records file will be created after a task completes,the placeholder in the file name format is the task id
+#Takes effect when data source type is CRAWLER or FILE
+records-file-name-format: report/records_%s.rr
+#Key website file stores every website by which Yogg ever sent SMS successfully,it is shared by all tasks
+#Takes effect when data source type is CRAWLER or FILE
+key-website-file-name: key_websites.kw
+#Local file for saving current settings
+settings-file-name: settings.json
+#Local file for saving current task configuration
+task-file-name: task.json
+
+#random port
+server:
+    port: 0
+#Logging file path
+logging:
+    file: logs/yogg.log

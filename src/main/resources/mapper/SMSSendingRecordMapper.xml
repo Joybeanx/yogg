@@ -1,0 +1,146 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.apache.ibatis.submitted.rounding.Mapper">
+    <resultMap
+            id="SMSSendingRecordMap"
+            type="SMSSendingRecord">
+        <result
+                column="status"
+                property="status"
+                typeHandler="com.joybean.yogg.support.DefaultEnumTypeHandler"/>
+    </resultMap>
+
+    <select
+            id="querySMSSendingRecord"
+            resultMap="SMSSendingRecordMap">
+        select
+        website,
+        target_page_url,
+        has_captcha,
+        sms_request_url,
+        exception,
+        status,
+        task_id,
+        create_time
+        from sms_sending_record
+        where task_id = #{taskId}
+        <if test="website != null">
+            and website like concat('%',#{website},'%')
+        </if>
+        <if test="statuses != null and statuses.length != 0">
+            and status in
+            <foreach
+                    item="status"
+                    collection="statuses"
+                    open="("
+                    separator=","
+                    close=")">
+                #{status,typeHandler=com.joybean.yogg.support.DefaultEnumTypeHandler}
+            </foreach>
+        </if>
+        <if test="pagination != null">
+            limit #{pagination.offset},#{pagination.limit}
+        </if>
+    </select>
+
+
+    <select
+            id="queryRecordWebsite"
+            resultType="java.lang.String">
+        select
+        website
+        from sms_sending_record
+        where task_id = #{taskId}
+        <if test="statuses != null and statuses.length != 0">
+            and status in
+            <foreach
+                    item="status"
+                    collection="statuses"
+                    open="("
+                    separator=","
+                    close=")">
+                #{status,typeHandler=com.joybean.yogg.support.DefaultEnumTypeHandler}
+            </foreach>
+        </if>
+        <if test="pagination != null">
+            limit #{pagination.offset},#{pagination.limit}
+        </if>
+    </select>
+
+    <insert id="insertSMSSendingRecord">
+        insert into sms_sending_record
+        (website, target_page_url,has_captcha,sms_request_url,exception,status,task_id,create_time)
+        values
+        <foreach
+                collection="array"
+                item="smsSendingRecord"
+                separator=",">
+            (#{smsSendingRecord.website},#{smsSendingRecord.targetPageUrl},
+            #{smsSendingRecord.hasCaptcha},#{smsSendingRecord.smsRequestUrl},
+            #{smsSendingRecord.exception},#{smsSendingRecord.status,typeHandler=com.joybean.yogg.support.DefaultEnumTypeHandler},
+            #{smsSendingRecord.taskId},#{smsSendingRecord.createTime})
+        </foreach>
+    </insert>
+
+    <insert id="replaceSMSSendingRecord">
+        replace into sms_sending_record
+        (website, target_page_url,has_captcha,sms_request_url,exception,status,task_id,create_time)
+        values
+        <foreach
+                collection="array"
+                item="smsSendingRecord"
+                separator=",">
+            (#{smsSendingRecord.website},#{smsSendingRecord.targetPageUrl},
+            #{smsSendingRecord.hasCaptcha},#{smsSendingRecord.smsRequestUrl},
+            #{smsSendingRecord.exception},#{smsSendingRecord.status,typeHandler=com.joybean.yogg.support.DefaultEnumTypeHandler},
+            #{smsSendingRecord.taskId},#{smsSendingRecord.createTime})
+        </foreach>
+    </insert>
+
+    <select
+            id="countSMSSendingRecord"
+            resultType="java.lang.Integer">
+        select count(1)
+        from sms_sending_record
+        where task_id = #{taskId}
+        <if test="website != null">
+            and website like concat('%',#{website},'%')
+        </if>
+        <if test="statuses != null and statuses.length != 0">
+            and status in
+            <foreach
+                    item="status"
+                    collection="statuses"
+                    open="("
+                    separator=","
+                    close=")">
+                #{status,typeHandler=com.joybean.yogg.support.DefaultEnumTypeHandler}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="countSMSSendingRecordByStatus" resultType="java.util.HashMap">
+        select  status,count(1) counter
+        from sms_sending_record
+        where task_id = #{taskId}
+        group by status
+    </select>
+
+    <select
+            id="ifSMSSendingRecordExist"
+            resultType="java.lang.Integer">
+        select exists
+            (select 1
+            from sms_sending_record
+            where task_id = #{taskId}
+            limit 1)
+    </select>
+
+    <update
+            id="deleteSMSSendingRecord">
+        delete from sms_sending_record where task_id=#{taskId}
+    </update>
+
+</mapper>

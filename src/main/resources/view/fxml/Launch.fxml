@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joybean.yogg.task.controller.InstantTaskController">
+    <children>
+        <SplitPane dividerPositions="0.5" orientation="VERTICAL" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <VBox alignment="TOP_CENTER">
+                    <children>
+                        <AnchorPane StackPane.alignment="TOP_CENTER">
+                            <children>
+                                <GridPane id="inputPane" fx:id="inputPane" alignment="TOP_CENTER" translateZ="1.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0">
+                                    <children>
+                                        <ToggleButton id="toggleButton" fx:id="toggleButton" mnemonicParsing="false" onAction="#switchTargetDisplayMode" opacity="0.9" translateZ="1.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                        <TextField fx:id="targetPhoneNumberInput" alignment="TOP_CENTER" focusTraversable="false" prefHeight="20.0" prefWidth="161.0" promptText="target phone number" translateZ="1.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                    </children>
+                           <columnConstraints>
+                              <ColumnConstraints fillWidth="false" halignment="CENTER" />
+                           </columnConstraints>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                        <ImageView fx:id="controlImageView" fitHeight="368.0" fitWidth="400.0" onMouseClicked="#start" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="/view/image/start.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+                <StackPane>
+                    <children>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="294.0" prefWidth="548.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+                            <content>
+                                <TextArea fx:id="logs" editable="false" />
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </StackPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

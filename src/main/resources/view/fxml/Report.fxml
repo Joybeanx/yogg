@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joybean.yogg.report.controller.ReportController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="598.0" prefWidth="625.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <PieChart fx:id="reportPieChart" clockwise="false" labelLineLength="12.0" legendVisible="false" prefHeight="243.0" prefWidth="550.0" startAngle="90.0" style="-fx-font-size: 8px;" />
+                        <Button layoutX="373.0" layoutY="13.0" mnemonicParsing="false" onAction="#refresh" prefHeight="23.0" prefWidth="87.0" text="Refresh" textAlignment="CENTER">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="/view/image/refresh.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button layoutX="466.0" layoutY="13.0" mnemonicParsing="false" onAction="#clear" text="Clear" textAlignment="CENTER">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="/view/image/clear.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <Pane layoutX="-3.0" layoutY="150.0" prefHeight="98.0" prefWidth="550.0">
+                    <children>
+                        <TextField fx:id="websiteTextField" layoutX="96.0" layoutY="10.0" />
+                        <Label layoutX="323.0" layoutY="14.0" text="status:" />
+                        <Label layoutX="39.0" layoutY="14.0" text="website:" />
+                        <ComboBox fx:id="statusComboBox" layoutX="372.0" layoutY="10.0" prefWidth="150.0" />
+                        <Button fx:id="searchButton" graphicTextGap="2.0" layoutX="293.0" layoutY="53.0" mnemonicParsing="false" onAction="#search" text="Search" textAlignment="CENTER">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="/view/image/search.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="resetButton" graphicTextGap="2.0" layoutX="206.0" layoutY="53.0" mnemonicParsing="false" onAction="#reset" text="Reset">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="/view/image/reset.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </Pane>
+                <TableView fx:id="reportRecordTableView" editable="true" prefHeight="207.0" prefWidth="550.0">
+                    <columns>
+                        <TableColumn fx:id="website" prefWidth="100.0" text="website" />
+                        <TableColumn fx:id="status" prefWidth="160.0" text="Status" />
+                        <TableColumn fx:id="targetPageUrl" prefWidth="160" text="Target Page Url" />
+                        <TableColumn fx:id="hasCaptcha" prefWidth="80.0" text="Has Captcha" />
+                        <TableColumn fx:id="smsRequestUrl" prefWidth="150.0" text="Sms Request Url" />
+                        <TableColumn fx:id="exception" prefWidth="150.0" text="Exception" />
+                    </columns>
+                </TableView>
+      
+      
+                <Pagination fx:id="reportRecordPagination" prefWidth="550.0" styleClass="bullet" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

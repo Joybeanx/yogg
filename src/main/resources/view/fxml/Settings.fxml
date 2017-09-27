@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joybean.yogg.settings.controller.SettingsController">
+    <children>
+        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Basic" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="threads:" textAlignment="CENTER">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="threadsTextField" prefHeight="23.0" prefWidth="74.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="timeout:" textAlignment="CENTER" />
+                        <TextField fx:id="timeoutTextField" prefHeight="23.0" prefWidth="74.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="ms" />
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" />
+                    </VBox.margin>
+                </HBox>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Proxy" textAlignment="CENTER">
+                    <effect>
+                        <Blend />
+                    </effect>
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <HBox spacing="20.0">
+                    <children>
+                        <Label contentDisplay="CENTER" text="type:" textAlignment="CENTER" />
+                        <RadioButton fx:id="directTypeRadio" mnemonicParsing="false" text="direct">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="proxyTypeGroup" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="httpTypeRadio" mnemonicParsing="false" text="http" toggleGroup="$proxyTypeGroup" />
+                        <RadioButton fx:id="socksTypeRadio" mnemonicParsing="false" text="socks" toggleGroup="$proxyTypeGroup" />
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Label contentDisplay="CENTER" text="host:" textAlignment="CENTER" />
+                        <TextField fx:id="proxyHostTextField" prefHeight="23.0" prefWidth="126.0" />
+                        <Label contentDisplay="CENTER" text="port:" textAlignment="CENTER" />
+                        <TextField fx:id="proxyPortTextField" prefHeight="23.0" prefWidth="70.0" />
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <Label text="DataSource">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <TabPane fx:id="dataSourceTabPane" styleClass="floating" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab fx:id="crawlerTab" text="Crawler">
+                            <content>
+                                <HBox spacing="20.0">
+                                    <children>
+                                        <Label text="start url:">
+                                 <HBox.margin>
+                                    <Insets top="3.0" />
+                                 </HBox.margin></Label>
+                                        <TextField fx:id="crawlerStartUrlTextField" prefHeight="23.0" prefWidth="261.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets left="20.0" top="20.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab text="File">
+                            <content>
+                                <HBox minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" spacing="5.0">
+                                    <children>
+                                        <TextField fx:id="filePathTextField" prefHeight="23.0" prefWidth="280.0" />
+                                        <Button fx:id="browse" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#browseFile" prefHeight="23.0" prefWidth="24.0">
+                                            <graphic>
+                                                <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="/view/image/folder.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                    <padding>
+                                        <Insets left="20.0" top="20.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab text="Database">
+                            <content>
+                                <VBox minHeight="0.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                            <children>
+                                                <Label text="type:" />
+                                                <ChoiceBox fx:id="databaseTypeChoiceBox" layoutX="83.0" layoutY="10.0" prefHeight="23.0" prefWidth="91.0" value="MySQL">
+                                                </ChoiceBox>
+                                            </children>
+                                            <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                            </padding>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                            <children>
+                                                <Label text="url:" />
+                                                <TextField fx:id="databaseUrlTextField" prefHeight="23.0" prefWidth="387.0" text="jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;" />
+                                            </children>
+                                            <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                            </padding>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                            <children>
+                                                <Label text="username:" />
+                                                <TextField fx:id="databaseUsernameTextField" prefHeight="23.0" prefWidth="128.0" />
+                                                <Label text="password:" />
+                                                <PasswordField fx:id="databasePasswordTextField" prefHeight="23.0" prefWidth="117.0" />
+                                            </children>
+                                            <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                            </padding>
+                                        </HBox>
+                                        <Button fx:id="testConnection" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#testDatabaseConnection" text="Test Connection">
+                                            <VBox.margin>
+                                                <Insets left="400.0" top="20.0" />
+                                            </VBox.margin>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </Tab>
+                    </tabs>
+                    <VBox.margin>
+                        <Insets left="20.0" />
+                    </VBox.margin>
+                </TabPane>
+                <Pane prefHeight="200.0" prefWidth="625.0">
+                    <children>
+                        <Button layoutX="455.0" layoutY="165.0" mnemonicParsing="false" text="Cancel">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="18.0">
+                                    <image>
+                                        <Image url="/view/image/cancel.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button layoutX="372.0" layoutY="165.0" mnemonicParsing="false" onAction="#saveSettings" text="Apply">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="18.0">
+                                    <image>
+                                        <Image url="/view/image/apply.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

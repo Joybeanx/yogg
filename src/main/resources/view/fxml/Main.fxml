@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<TabPane prefHeight="600" prefWidth="600.0" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0" tabMinWidth="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <tabs>
+        <Tab style="-fx-background-image: url('view/image/attack.png');">
+            <styleClass>
+                <String fx:value="tab-menu" />
+            </styleClass>
+            <content>
+                <fx:include source="Launch.fxml" />
+            </content>
+        </Tab>
+        <Tab style="-fx-background-image: url('view/image/report.png');">
+            <styleClass>
+                <String fx:value="tab-menu" />
+            </styleClass>
+            <content>
+                <fx:include source="Report.fxml" />
+            </content>
+        </Tab>
+       <!-- <Tab>
+            <styleClass>
+                <String fx:value="tab-schedule" />
+                <String fx:value="tab-menu" />
+            </styleClass>
+            <content>
+                <fx:include source="Task.fxml" />
+            </content>
+        </Tab>-->
+        <Tab style="-fx-background-image: url('view/image/settings.png');">
+            <styleClass>
+                <String fx:value="tab-menu" />
+            </styleClass>
+            <content>
+                <fx:include source="Settings.fxml" />
+            </content>
+        </Tab>
+    </tabs>
+    <stylesheets>
+        <URL value="@/view/app.css" />
+    </stylesheets>
+</TabPane>

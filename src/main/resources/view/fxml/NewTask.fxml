@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<Dialog fx:id="dialog" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.joybean.yogg.task.controller.ScheduledTaskController">
+    <dialogPane>
+        <DialogPane prefHeight="600" prefWidth="600.0">
+            <content>
+                <VBox>
+                    <children>
+                        <HBox alignment="TOP_CENTER">
+                            <children>
+                                <Label text="Name">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets right="20.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <TextField>
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </TextField>
+                                <Label text="Target">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="20.0" right="20.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <TextField alignment="CENTER_RIGHT">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0"/>
+                            </VBox.margin>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </HBox>
+                        <VBox alignment="TOP_CENTER">
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" text="Schedule">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <TextField alignment="CENTER" style="-fx-text-inner-color: blue;">
+                                    <font>
+                                        <Font name="System Bold" size="14.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="200.0" right="200.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <TabPane styleClass="floating" tabClosingPolicy="UNAVAILABLE" tabMinHeight="40.0"
+                                         tabMinWidth="130.0">
+                                    <tabs>
+                                        <Tab text="minutes">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <RadioButton layoutX="14.0" layoutY="14.0"
+                                                                     mnemonicParsing="false"
+                                                                     selected="true" text="every">
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="minuteGroup"/>
+                                                            </toggleGroup>
+                                                        </RadioButton>
+                                                        <RadioButton layoutX="14.0" layoutY="54.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="range" toggleGroup="$minuteGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="92.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="step" toggleGroup="$minuteGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="124.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="list" toggleGroup="$minuteGroup"/>
+
+                                                        <Spinner editable="true" initialValue="0" layoutX="87.0"
+                                                                 layoutY="51.0"
+                                                                 max="59" maxWidth="60" min="0"/>
+                                                        <Label layoutX="170.0" layoutY="55.0" text="-"/>
+                                                        <Spinner editable="true" initialValue="0" layoutX="189.0"
+                                                                 layoutY="51.0"
+                                                                 max="59" maxWidth="60" min="0"/>
+                                                        <Label layoutX="87.0" layoutY="93.0" text="Start from"/>
+                                                        <Spinner editable="true" initialValue="0" layoutX="155.0"
+                                                                 layoutY="89.0"
+                                                                 max="59" maxWidth="60" min="0"/>
+                                                        <Label layoutX="258.0" layoutY="93.0" text="Every "/>
+                                                        <Label layoutX="395.0" layoutY="93.0" text="minutes"/>
+                                                        <TextField layoutX="302.0" layoutY="89.0" prefHeight="23.0"
+                                                                   prefWidth="85.0"/>
+                                                        <ListView layoutX="87.0" layoutY="132.0" prefHeight="120.0"
+                                                                  prefWidth="145.0">
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="0"/>
+                                                                    <String fx:value="1"/>
+                                                                    <String fx:value="2"/>
+                                                                    <String fx:value="3"/>
+                                                                    <String fx:value="4"/>
+                                                                    <String fx:value="5"/>
+                                                                    <String fx:value="6"/>
+                                                                    <String fx:value="7"/>
+                                                                    <String fx:value="8"/>
+                                                                    <String fx:value="9"/>
+                                                                    <String fx:value="10"/>
+                                                                    <String fx:value="11"/>
+                                                                    <String fx:value="12"/>
+                                                                    <String fx:value="13"/>
+                                                                    <String fx:value="14"/>
+                                                                    <String fx:value="15"/>
+                                                                    <String fx:value="16"/>
+                                                                    <String fx:value="17"/>
+                                                                    <String fx:value="18"/>
+                                                                    <String fx:value="19"/>
+                                                                    <String fx:value="20"/>
+                                                                    <String fx:value="21"/>
+                                                                    <String fx:value="22"/>
+                                                                    <String fx:value="23"/>
+                                                                    <String fx:value="24"/>
+                                                                    <String fx:value="25"/>
+                                                                    <String fx:value="26"/>
+                                                                    <String fx:value="27"/>
+                                                                    <String fx:value="28"/>
+                                                                    <String fx:value="29"/>
+                                                                    <String fx:value="30"/>
+                                                                    <String fx:value="31"/>
+                                                                    <String fx:value="32"/>
+                                                                    <String fx:value="33"/>
+                                                                    <String fx:value="34"/>
+                                                                    <String fx:value="35"/>
+                                                                    <String fx:value="36"/>
+                                                                    <String fx:value="37"/>
+                                                                    <String fx:value="38"/>
+                                                                    <String fx:value="39"/>
+                                                                    <String fx:value="40"/>
+                                                                    <String fx:value="41"/>
+                                                                    <String fx:value="42"/>
+                                                                    <String fx:value="43"/>
+                                                                    <String fx:value="44"/>
+                                                                    <String fx:value="45"/>
+                                                                    <String fx:value="46"/>
+                                                                    <String fx:value="47"/>
+                                                                    <String fx:value="48"/>
+                                                                    <String fx:value="49"/>
+                                                                    <String fx:value="50"/>
+                                                                    <String fx:value="51"/>
+                                                                    <String fx:value="52"/>
+                                                                    <String fx:value="53"/>
+                                                                    <String fx:value="54"/>
+                                                                    <String fx:value="55"/>
+                                                                    <String fx:value="56"/>
+                                                                    <String fx:value="57"/>
+                                                                    <String fx:value="58"/>
+                                                                    <String fx:value="59"/>
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ListView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="hours">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <RadioButton layoutX="14.0" layoutY="14.0"
+                                                                     mnemonicParsing="false"
+                                                                     selected="true" text="every">
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="hourGroup"/>
+                                                            </toggleGroup>
+                                                        </RadioButton>
+                                                        <RadioButton layoutX="14.0" layoutY="54.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="range" toggleGroup="$hourGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="92.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="step" toggleGroup="$hourGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="124.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="list" toggleGroup="$hourGroup"/>
+
+                                                        <Spinner editable="true" initialValue="0" layoutX="87.0"
+                                                                 layoutY="51.0"
+                                                                 max="23" maxWidth="60" min="0"/>
+                                                        <Label layoutX="170.0" layoutY="55.0" text="-"/>
+                                                        <Spinner editable="true" initialValue="0" layoutX="189.0"
+                                                                 layoutY="51.0"
+                                                                 max="23" maxWidth="60" min="0"/>
+                                                        <Label layoutX="87.0" layoutY="93.0" text="Start from"/>
+                                                        <Spinner editable="true" initialValue="0" layoutX="155.0"
+                                                                 layoutY="89.0"
+                                                                 max="23" maxWidth="60" min="0"/>
+                                                        <Label layoutX="258.0" layoutY="93.0" text="Every "/>
+                                                        <Label layoutX="395.0" layoutY="93.0" text="hours"/>
+                                                        <TextField layoutX="302.0" layoutY="89.0" prefHeight="23.0"
+                                                                   prefWidth="85.0"/>
+                                                        <ListView layoutX="87.0" layoutY="132.0" prefHeight="120.0"
+                                                                  prefWidth="145.0">
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="0"/>
+                                                                    <String fx:value="1"/>
+                                                                    <String fx:value="2"/>
+                                                                    <String fx:value="3"/>
+                                                                    <String fx:value="4"/>
+                                                                    <String fx:value="5"/>
+                                                                    <String fx:value="6"/>
+                                                                    <String fx:value="7"/>
+                                                                    <String fx:value="8"/>
+                                                                    <String fx:value="9"/>
+                                                                    <String fx:value="10"/>
+                                                                    <String fx:value="11"/>
+                                                                    <String fx:value="12"/>
+                                                                    <String fx:value="13"/>
+                                                                    <String fx:value="14"/>
+                                                                    <String fx:value="15"/>
+                                                                    <String fx:value="16"/>
+                                                                    <String fx:value="17"/>
+                                                                    <String fx:value="18"/>
+                                                                    <String fx:value="19"/>
+                                                                    <String fx:value="20"/>
+                                                                    <String fx:value="21"/>
+                                                                    <String fx:value="22"/>
+                                                                    <String fx:value="23"/>
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ListView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="day of month">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <RadioButton layoutX="14.0" layoutY="14.0"
+                                                                     mnemonicParsing="false"
+                                                                     selected="true" text="every">
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="dayGroup"/>
+                                                            </toggleGroup>
+                                                        </RadioButton>
+                                                        <RadioButton layoutX="14.0" layoutY="54.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="range" toggleGroup="$dayGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="92.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="step" toggleGroup="$dayGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="124.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="list" toggleGroup="$dayGroup"/>
+
+                                                        <Spinner editable="true" initialValue="1" layoutX="87.0"
+                                                                 layoutY="51.0"
+                                                                 max="31" maxWidth="60" min="1"/>
+                                                        <Label layoutX="170.0" layoutY="55.0" text="-"/>
+                                                        <Spinner editable="true" initialValue="1" layoutX="189.0"
+                                                                 layoutY="51.0"
+                                                                 max="31" maxWidth="60" min="1"/>
+                                                        <Label layoutX="87.0" layoutY="93.0" text="Start from"/>
+                                                        <Spinner editable="true" initialValue="1" layoutX="155.0"
+                                                                 layoutY="89.0"
+                                                                 max="31" maxWidth="60" min="1"/>
+                                                        <Label layoutX="258.0" layoutY="93.0" text="Every "/>
+                                                        <Label layoutX="395.0" layoutY="93.0" text="days"/>
+                                                        <TextField layoutX="302.0" layoutY="89.0" prefHeight="23.0"
+                                                                   prefWidth="85.0"/>
+                                                        <ListView layoutX="87.0" layoutY="132.0" prefHeight="120.0"
+                                                                  prefWidth="145.0">
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="0"/>
+                                                                    <String fx:value="1"/>
+                                                                    <String fx:value="2"/>
+                                                                    <String fx:value="3"/>
+                                                                    <String fx:value="4"/>
+                                                                    <String fx:value="5"/>
+                                                                    <String fx:value="6"/>
+                                                                    <String fx:value="7"/>
+                                                                    <String fx:value="8"/>
+                                                                    <String fx:value="9"/>
+                                                                    <String fx:value="10"/>
+                                                                    <String fx:value="11"/>
+                                                                    <String fx:value="12"/>
+                                                                    <String fx:value="13"/>
+                                                                    <String fx:value="14"/>
+                                                                    <String fx:value="15"/>
+                                                                    <String fx:value="16"/>
+                                                                    <String fx:value="17"/>
+                                                                    <String fx:value="18"/>
+                                                                    <String fx:value="19"/>
+                                                                    <String fx:value="20"/>
+                                                                    <String fx:value="21"/>
+                                                                    <String fx:value="22"/>
+                                                                    <String fx:value="23"/>
+                                                                    <String fx:value="24"/>
+                                                                    <String fx:value="25"/>
+                                                                    <String fx:value="26"/>
+                                                                    <String fx:value="27"/>
+                                                                    <String fx:value="28"/>
+                                                                    <String fx:value="29"/>
+                                                                    <String fx:value="30"/>
+                                                                    <String fx:value="31"/>
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ListView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="month">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <RadioButton layoutX="14.0" layoutY="14.0"
+                                                                     mnemonicParsing="false"
+                                                                     selected="true" text="every">
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="monthGroup"/>
+                                                            </toggleGroup>
+                                                        </RadioButton>
+                                                        <RadioButton layoutX="14.0" layoutY="54.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="range" toggleGroup="$monthGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="92.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="step" toggleGroup="$monthGroup"/>
+                                                        <RadioButton layoutX="14.0" layoutY="124.0"
+                                                                     mnemonicParsing="false"
+                                                                     text="list" toggleGroup="$monthGroup"/>
+
+                                                        <Spinner editable="true" initialValue="1" layoutX="87.0"
+                                                                 layoutY="51.0"
+                                                                 max="12" maxWidth="60" min="1"/>
+                                                        <Label layoutX="170.0" layoutY="55.0" text="-"/>
+                                                        <Spinner editable="true" initialValue="1" layoutX="189.0"
+                                                                 layoutY="51.0"
+                                                                 max="12" maxWidth="60" min="1"/>
+                                                        <Label layoutX="87.0" layoutY="93.0" text="Start from"/>
+                                                        <Spinner editable="true" initialValue="1" layoutX="155.0"
+                                                                 layoutY="89.0"
+                                                                 max="12" maxWidth="60" min="1"/>
+                                                        <Label layoutX="258.0" layoutY="93.0" text="Every "/>
+                                                        <Label layoutX="395.0" layoutY="93.0" text="months"/>
+                                                        <TextField layoutX="302.0" layoutY="89.0" prefHeight="23.0"
+                                                                   prefWidth="85.0"/>
+                                                        <ListView layoutX="87.0" layoutY="132.0" prefHeight="120.0"
+                                                                  prefWidth="145.0">
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="0"/>
+                                                                    <String fx:value="1"/>
+                                                                    <String fx:value="2"/>
+                                                                    <String fx:value="3"/>
+                                                                    <String fx:value="4"/>
+                                                                    <String fx:value="5"/>
+                                                                    <String fx:value="6"/>
+                                                                    <String fx:value="7"/>
+                                                                    <String fx:value="8"/>
+                                                                    <String fx:value="9"/>
+                                                                    <String fx:value="10"/>
+                                                                    <String fx:value="11"/>
+                                                                    <String fx:value="12"/>
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ListView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="40.0"/>
+                            </VBox.margin>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </DialogPane>
+    </dialogPane>
+</Dialog>
