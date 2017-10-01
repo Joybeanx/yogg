@@ -65,10 +65,10 @@
           <body>visitHomePageAction</body>
         </entry>
       </subvertex>
-      <subvertex xmi:type="uml:State" xmi:id="_r64zYHINEeeGQNs7B5WvsA" name="REDIRECT_TO_TARGET_PAGE">
-        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_2JptcHINEeeGQNs7B5WvsA" name="redirectToTargetPageAction">
+      <subvertex xmi:type="uml:State" xmi:id="_r64zYHINEeeGQNs7B5WvsA" name="JUMP_TO_TARGET_PAGE">
+        <entry xmi:type="uml:OpaqueBehavior" xmi:id="_2JptcHINEeeGQNs7B5WvsA" name="jumpToTargetPageAction">
           <language>bean</language>
-          <body>redirectToTargetPageAction</body>
+          <body>jumpToTargetPageAction</body>
         </entry>
       </subvertex>
       <subvertex xmi:type="uml:Pseudostate" xmi:id="_SiwRAHIOEeeGQNs7B5WvsA"/>

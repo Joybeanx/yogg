@@ -9,16 +9,17 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
+import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.RECORD_PROPERTY_TARGET_PAGE_URL;
+import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.STATE_MACHINE_VARIABLE_WEB_CLIENT;
 
 /**
- * Action of redirecting to target page.
+ * Action of jumping to target page.
  * <p> A target page is the page on which we attempt to send SMS,such as a register page.</p>
  *
  * @author jobean
  */
 @Component
-public class RedirectToTargetPageAction extends ClickAction {
+public class JumpToTargetPageAction extends ClickAction {
     @Override
     protected void onBefore(StateContext<String, String> context) throws Exception {
         WebClient webClient = getVariable(STATE_MACHINE_VARIABLE_WEB_CLIENT, context);
