@@ -91,20 +91,30 @@ public class Task implements Serializable {
 
     public Date getNextExecutionTime() {
         //findbugs:May expose internal representation by returning reference to mutable object
-        return new Date(nextExecutionTime.getTime());
+        if (nextExecutionTime != null) {
+            return new Date(nextExecutionTime.getTime());
+        }
+        return null;
     }
 
     public void setNextExecutionTime(Date nextExecutionTime) {
-        this.nextExecutionTime = new Date(nextExecutionTime.getTime());
+        if (nextExecutionTime != null) {
+            this.nextExecutionTime = new Date(nextExecutionTime.getTime());
+        }
     }
 
     public Date getCreateTime() {
         //findbugs:May expose internal representation by returning reference to mutable object
-        return new Date(createTime.getTime());
+        if (createTime != null) {
+            return new Date(createTime.getTime());
+        }
+        return null;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = new Date(createTime.getTime());
+        if (createTime != null) {
+            this.createTime = new Date(createTime.getTime());
+        }
     }
 
     public TaskContext getTaskContext() {

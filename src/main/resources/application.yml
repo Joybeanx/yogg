@@ -43,13 +43,13 @@ page-element-locators:
                     - //*[(self::button or self::a) and text()[contains(.,"确定") or contains(.,"确认")]]
                     - //*[text()[contains(.,"确定") or contains(.,"确认")]]
 
-#Data source type of website:CRAWLER,FILE,DATABASE
+#Data source type:CRAWLER,FILE,DATABASE
 data-source-type: CRAWLER
 
 
 file-datasource:
        #Path of website file
-       file-path: C:/Users/Administrator/Desktop/websites.txt
+       file-path:
 
 crawler-datasource:
         #Urls from which crawler start to search for websites
