@@ -4,10 +4,8 @@ import com.gargoylesoftware.htmlunit.HttpWebConnection;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.WebResponse;
-import com.joybean.yogg.config.YoggConfig;
 import com.joybean.yogg.report.record.SMSSendingRecord;
 import com.joybean.yogg.support.HtmlUnitUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.statemachine.StateContext;
 import org.springframework.stereotype.Component;
 
@@ -50,9 +48,6 @@ public class InitWebClientAction extends AbstractAction {
 
     private String matches(WebRequest request, String currentPhoneNumber) {
         String requestUrl = request.getUrl().toString();
-        if(requestUrl==null){
-            return null;
-        }
         String requestBody = request.getRequestBody();
         if (requestUrl.contains(currentPhoneNumber)) {
             return requestUrl;

@@ -3,8 +3,6 @@ package com.joybean.yogg.support;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +14,11 @@ public class ContextHolder implements ApplicationContextAware {
     private static ApplicationContext springContext;
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.springContext = applicationContext;
+        setSpringContext(applicationContext);
+    }
+
+    private static void setSpringContext(ApplicationContext springContext) {
+        ContextHolder.springContext = springContext;
     }
 
     public static ApplicationContext getSpringContext() {

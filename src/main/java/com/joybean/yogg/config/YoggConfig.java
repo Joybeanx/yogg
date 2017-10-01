@@ -1,10 +1,8 @@
 package com.joybean.yogg.config;
 
 import com.joybean.yogg.datasource.DataSourceFactory;
-import com.joybean.yogg.support.ContextHolder;
 import com.joybean.yogg.support.JsonUtils;
 import com.joybean.yogg.support.YoggException;
-import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.DependsOn;
@@ -22,8 +20,9 @@ import java.util.List;
 @ConfigurationProperties
 @DependsOn("contextHolder")
 public class YoggConfig implements Serializable {
+    private static final long serialVersionUID = -2167754318343177731L;
     /**
-     * Target mobile phone numbers which we send SMS to
+     * Target mobile phone number which we send SMS to,excluding country calling code
      */
     private LinkedList<String> targets;
     /**
@@ -60,7 +59,7 @@ public class YoggConfig implements Serializable {
      */
     private String recordsFileNameFormat;
     /**
-     * Key website file stores every website by which Yogg ever sent SMS successfully,it is shared by all tasks<br/>
+     * Key website file stores website by which Yogg sent SMS successfully,it is shared by all tasks<br/>
      * Takes effect when data source type is CRAWLER or FILE
      */
     private String keyWebsiteFileName;
@@ -98,7 +97,8 @@ public class YoggConfig implements Serializable {
         }
     }
 
-    public static class PageElementLocators {
+    public static class PageElementLocators implements Serializable{
+        private static final long serialVersionUID = -5070295430618253722L;
         /**
          * XPaths for finding a link of target page,such as XPath of register link on home page
          */

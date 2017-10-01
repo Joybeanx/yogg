@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -68,7 +69,7 @@ public class JsonUtils {
         if (path != null) {
             String json = JsonUtils.bean2PrettyJson(t);
             try {
-                Files.write(path, json.getBytes());
+                Files.write(path, json.getBytes(Charset.defaultCharset()));
             } catch (IOException e) {
                 throw new YoggException("Failed to write %s to %s", t, filePath);
             }
@@ -80,7 +81,7 @@ public class JsonUtils {
         if (path != null) {
             String json;
             try {
-                json = new String(Files.readAllBytes(path));
+                json = new String(Files.readAllBytes(path), Charset.defaultCharset());
             } catch (IOException e) {
                 throw new YoggException("Failed to read json file %s", filePath);
             }

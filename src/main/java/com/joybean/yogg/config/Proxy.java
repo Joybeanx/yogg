@@ -2,10 +2,13 @@ package com.joybean.yogg.config;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
+
 /**
  * @author jobean
  */
-public class Proxy {
+public class Proxy implements Serializable {
+    private static final long serialVersionUID = 948386797888869135L;
     private Proxy.Type type;
     private String host;
     private String port;
@@ -54,9 +57,9 @@ public class Proxy {
         this.port = port;
     }
 
-    public static enum Type {
+    public enum Type {
         DIRECT,
         HTTP,
-        SOCKS;
+        SOCKS
     }
 }

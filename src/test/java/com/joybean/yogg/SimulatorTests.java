@@ -85,11 +85,11 @@ public class SimulatorTests {
         List<String> pns = new ArrayList<>();
         for (int n = 0; n < size; n++) {
             Random random = new Random();
-            String pn = "156";
+            StringBuilder pn = new StringBuilder("156");
             for (int i = 0; i < 8; i++) {
-                pn += random.nextInt(10);
+                pn.append(random.nextInt(10));
             }
-            pns.add(pn);
+            pns.add(pn.toString());
         }
         return pns;
     }

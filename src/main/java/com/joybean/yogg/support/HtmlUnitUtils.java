@@ -25,7 +25,7 @@ public class HtmlUnitUtils {
         WebClientOptions options = webClient.getOptions();
         if (proxy != null && !Proxy.Type.DIRECT.equals(proxy.getType()) && StringUtils.isNotBlank(proxy.getHost())) {
             ProxyConfig proxyConfig = new ProxyConfig(proxy.getHost(),
-                    Integer.valueOf(proxy.getPort()));
+                    Integer.parseInt(proxy.getPort()));
             options.setProxyConfig(proxyConfig);
         }
         //Usually we don't need to enable javascript while visiting home page to find a redirect link
@@ -53,7 +53,7 @@ public class HtmlUnitUtils {
         return clickFirstByXPaths(parentElement, xPaths.toArray(new String[xPaths.size()]));
     }
 
-    public static Page clickFirstByXPaths(final DomNode parentElement,
+    private static Page clickFirstByXPaths(final DomNode parentElement,
                                           String... xPaths) throws IOException {
         Assert.notNull(parentElement, "ParentElement must not be null");
         DomElement element;
@@ -70,7 +70,7 @@ public class HtmlUnitUtils {
         return inputFirstByXPaths(parentElement, value, xPaths.toArray(new String[xPaths.size()]));
     }
 
-    public static boolean inputFirstByXPaths(DomNode parentElement, String value,
+    private static boolean inputFirstByXPaths(DomNode parentElement, String value,
                                              String... xPaths) throws IOException {
         Assert.notNull(parentElement, "ParentElement must not be null");
         Assert.notNull(xPaths, "XPaths must not be null");
@@ -84,7 +84,7 @@ public class HtmlUnitUtils {
 
 
     @SuppressWarnings("unchecked")
-    public static <T> T findFirstByXPaths(final DomNode parentElement,
+    private static <T> T findFirstByXPaths(final DomNode parentElement,
                                           String... xPaths) {
         Assert.notNull(parentElement, "ParentElement must not be null");
         Assert.notNull(xPaths, "XPaths must not be null");

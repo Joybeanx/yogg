@@ -52,17 +52,12 @@ public class SettingsController extends SplitPane implements Initializable {
     //private final static String ORACLE = "Oracle";
     private final static String DEFAULT_HOST = "127.0.0.1";
     private final static String DEFAULT_PORT = "8080";
-    public static final String START_URL_SEPARATOR = ",";
-    @Autowired
-    private ViewManager viewManager;
-    @Autowired
-    private SettingService settingService;
-    @Autowired
-    private ReportController reportController;
-    @Autowired
+    private static final String START_URL_SEPARATOR = ",";
     private YoggConfig config;
-    @Autowired
     private StateMachinePool stateMachinePool;
+    private ViewManager viewManager;
+    private SettingService settingService;
+    private ReportController reportController;
     @FXML
     private TextField threadsTextField;
     @FXML
@@ -112,7 +107,7 @@ public class SettingsController extends SplitPane implements Initializable {
     /**
      * Save settings to file and update config in memory
      *
-     * @param actionEvent
+     * @param actionEvent actionEvent
      */
     public void saveSettings(ActionEvent actionEvent) {
         List<String> invalidItems = validateInputs(threadsTextField.getText(), timeoutTextField.getText(), proxyHostTextField.getText(), proxyPortTextField.getText());
@@ -166,8 +161,7 @@ public class SettingsController extends SplitPane implements Initializable {
     private Proxy rebuildProxy() {
         String proxyHost = proxyHostTextField.getText();
         String proxyPort = proxyPortTextField.getText();
-        Proxy proxy = new Proxy(getSelectedProxyType(), proxyHost, proxyPort);
-        return proxy;
+        return new Proxy(getSelectedProxyType(), proxyHost, proxyPort);
     }
 
     /**
@@ -253,7 +247,7 @@ public class SettingsController extends SplitPane implements Initializable {
     /**
      * Test database connection
      *
-     * @param actionEvent
+     * @param actionEvent actionEvent
      */
     public void testDatabaseConnection(ActionEvent actionEvent) {
         String dataSourceType = databaseTypeChoiceBox.getSelectionModel().getSelectedItem();
@@ -272,8 +266,8 @@ public class SettingsController extends SplitPane implements Initializable {
     /**
      * Open a choose file dialog
      *
-     * @param actionEvent
-     * @throws IOException
+     * @param actionEvent actionEvent
+     * @throws IOException If I/O error occurs
      */
     public void browseFile(ActionEvent actionEvent) throws IOException {
         final FileChooser fileChooser = new FileChooser();
@@ -385,7 +379,7 @@ public class SettingsController extends SplitPane implements Initializable {
      * Build choice box of database type
      */
     private void buildDatabaseTypeItems() {
-        databaseMapping.put(MYSQL, new Pair("com.mysql.jdbc.Driver", "jdbc:mysql://<host>:<port>/<database>"));
+        databaseMapping.put(MYSQL, new Pair<>("com.mysql.jdbc.Driver", "jdbc:mysql://<host>:<port>/<database>"));
         //databaseMapping.put(ORACLE, new Pair("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@<host>:<port>:<sid> "));
         for (String type : databaseMapping.keySet()) {
             databaseTypeChoiceBox.getItems().add(type);
@@ -408,7 +402,7 @@ public class SettingsController extends SplitPane implements Initializable {
     }
 
     private String getSelectedProxyType() {
-        Optional<RadioButton> selectedRadioButton = proxyTypeRadioMap.values().stream().filter(r -> r.isSelected()).findAny();
+        Optional<RadioButton> selectedRadioButton = proxyTypeRadioMap.values().stream().filter(RadioButton::isSelected).findAny();
         if (selectedRadioButton.isPresent()) {
             return selectedRadioButton.get().getText();
         }
@@ -416,26 +410,50 @@ public class SettingsController extends SplitPane implements Initializable {
     }
 
     private String getSelectedDbType(String driverClassName) {
-        Optional<String> optional = databaseMapping.entrySet().stream().filter(e -> e.getValue().getKey().equals(driverClassName)).map(e -> e.getKey()).findFirst();
+        Optional<String> optional = databaseMapping.entrySet().stream().filter(e -> e.getValue().getKey().equals(driverClassName)).map(Map.Entry::getKey).findFirst();
         if (optional.isPresent()) {
             return optional.get();
         }
         throw new YoggException("Unsupported driver:%s", driverClassName);
     }
 
-    private class ProxyInputStyle {
+    static class ProxyInputStyle {
         private boolean editable;
 
-        public ProxyInputStyle() {
+        ProxyInputStyle() {
         }
 
-        public ProxyInputStyle(boolean editable) {
+        ProxyInputStyle(boolean editable) {
             this.editable = editable;
         }
 
-        public boolean isEditable() {
+        boolean isEditable() {
             return editable;
         }
     }
 
+    @Autowired
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
+
+    @Autowired
+    public void setSettingService(SettingService settingService) {
+        this.settingService = settingService;
+    }
+
+    @Autowired
+    public void setReportController(ReportController reportController) {
+        this.reportController = reportController;
+    }
+
+    @Autowired
+    public void setConfig(YoggConfig config) {
+        this.config = config;
+    }
+
+    @Autowired
+    public void setStateMachinePool(StateMachinePool stateMachinePool) {
+        this.stateMachinePool = stateMachinePool;
+    }
 }

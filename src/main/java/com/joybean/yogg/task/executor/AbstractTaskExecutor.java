@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package com.joybean.yogg.task.executor;
 
 
@@ -44,16 +42,11 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
     private final Logger LOGGER = LoggerFactory
             .getLogger(this.getClass());
     private final static List<TaskExecutor> taskExecutorList = new ArrayList<>();
-    @Autowired
-    private YoggConfig config;
-    @Autowired
-    private ReportService reportService;
-    @Autowired
-    protected WebsiteService websiteService;
-    @Autowired
-    @Qualifier("htmlUnitSMSSendingSimulator")
-    private HtmlUnitSMSSendingSimulator sendingSimulator;
     private ThreadPoolExecutor threadPool;
+    private YoggConfig config;
+    private ReportService reportService;
+    WebsiteService websiteService;
+    private HtmlUnitSMSSendingSimulator sendingSimulator;
 
     @PostConstruct
     private void init() {
@@ -69,7 +62,7 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
                 "TaskExecutorThread-%d", threads);
     }
 
-    protected TaskReport doExecute(Task task) {
+    TaskReport doExecute(Task task) {
         String taskId = task.getTaskId();
         LOGGER.info("Start to execute task [{}]", taskId);
         LOGGER.info("Prepare to send SMS to {}", task.getTargetPhoneNumbers());
@@ -129,9 +122,11 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
                 }
             }
         } finally {
-            taskReport.setFinishTime(new Date());
-            LOGGER.info("Report of task [{}]:\r\n{}", taskId, JsonUtils.bean2PrettyJson(taskReport));
-            updateTaskReport(taskReport);
+            if (taskReport != null) {
+                taskReport.setFinishTime(new Date());
+                LOGGER.info("Report of task [{}]:\r\n{}", taskId, JsonUtils.bean2PrettyJson(taskReport));
+                updateTaskReport(taskReport);
+            }
         }
         return taskReport;
     }
@@ -142,8 +137,7 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
         List<CompletableFuture<SMSSendingRecord>> newFutures = websites.stream().parallel().filter(e -> !interrupted())
                 .map(d -> CompletableFuture.supplyAsync(() -> {
                             LOGGER.info("Trying to send SMS by {}...", d);
-                            SMSSendingRecord record = sendingSimulator.trySend(targetPhoneNumbers, d, taskId);
-                            return record;
+                            return sendingSimulator.trySend(targetPhoneNumbers, d, taskId);
                         }, threadPool).whenCompleteAsync((r, a) -> onComplete(statistics, r))
                 ).collect(Collectors.toList());
         storeAndRemoveDone(futures);
@@ -159,7 +153,7 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
 
 
     private void waitToComplete(List<CompletableFuture<SMSSendingRecord>> futures) {
-        List<SMSSendingRecord> records = futures.stream().map(f -> f.join()).collect(Collectors.toList());
+        List<SMSSendingRecord> records = futures.stream().map(CompletableFuture::join).collect(Collectors.toList());
         storeDone(records);
         collectAndStoreKeyWebsite(records);
     }
@@ -178,7 +172,7 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
             }
             return false;
         });
-        List<SMSSendingRecord> availableRecords = doneFutures.stream().map(f -> f.join()).collect(Collectors.toList());
+        List<SMSSendingRecord> availableRecords = doneFutures.stream().map(CompletableFuture::join).collect(Collectors.toList());
         storeDone(availableRecords);
         //TODO should not always store key website
         collectAndStoreKeyWebsite(availableRecords);
@@ -283,11 +277,32 @@ public abstract class AbstractTaskExecutor implements TaskExecutor {
 
     }
 
-    public List<TaskExecutor> getTaskExecutorList() {
+    List<TaskExecutor> getTaskExecutorList() {
         return taskExecutorList;
     }
 
     public ThreadPoolExecutor getThreadPool() {
         return threadPool;
+    }
+
+    @Autowired
+    public void setConfig(YoggConfig config) {
+        this.config = config;
+    }
+
+    @Autowired
+    public void setReportService(ReportService reportService) {
+        this.reportService = reportService;
+    }
+
+    @Autowired
+    public void setWebsiteService(WebsiteService websiteService) {
+        this.websiteService = websiteService;
+    }
+
+    @Autowired
+    @Qualifier("htmlUnitSMSSendingSimulator")
+    public void setSendingSimulator(HtmlUnitSMSSendingSimulator sendingSimulator) {
+        this.sendingSimulator = sendingSimulator;
     }
 }

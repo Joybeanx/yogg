@@ -12,6 +12,8 @@ import java.util.List;
  * @author jobean
  */
 public class Task implements Serializable {
+
+    private static final long serialVersionUID = -7076930824506084196L;
     public final static String TASK_ID_MAIN = "main";
     private String taskId;
     private String taskName;
@@ -34,7 +36,7 @@ public class Task implements Serializable {
     /**
      * Task context
      */
-    private TaskContext taskContext = new TaskContext();
+    private transient TaskContext taskContext = new TaskContext();
     /**
      * Time when task was created
      */
@@ -88,19 +90,21 @@ public class Task implements Serializable {
     }
 
     public Date getNextExecutionTime() {
-        return nextExecutionTime;
+        //findbugs:May expose internal representation by returning reference to mutable object
+        return new Date(nextExecutionTime.getTime());
     }
 
     public void setNextExecutionTime(Date nextExecutionTime) {
-        this.nextExecutionTime = nextExecutionTime;
+        this.nextExecutionTime = new Date(nextExecutionTime.getTime());
     }
 
     public Date getCreateTime() {
-        return createTime;
+        //findbugs:May expose internal representation by returning reference to mutable object
+        return new Date(createTime.getTime());
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        this.createTime = new Date(createTime.getTime());
     }
 
     public TaskContext getTaskContext() {

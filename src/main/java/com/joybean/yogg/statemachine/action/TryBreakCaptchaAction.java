@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 
-import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
+import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.RECORD_PROPERTY_HAS_CAPTCHA;
 import static java.util.UUID.randomUUID;
 
 /**
@@ -25,7 +25,6 @@ public class TryBreakCaptchaAction extends AbstractAction {
     private final static Logger LOGGER = LoggerFactory
             .getLogger(TryBreakCaptchaAction.class);
     private final static String IMG_FILE_FORMAT = "temp/%s.jpg";
-    @Autowired
     private CaptchaSolver captchaSolver;
 
     @Override
@@ -47,7 +46,7 @@ public class TryBreakCaptchaAction extends AbstractAction {
     }
 
 
-    public String resolveCaptcha(HtmlPage page) throws IOException {
+    private String resolveCaptcha(HtmlPage page) throws IOException {
         HtmlImage captchaImg = HtmlUnitUtils.findFirstByXPaths(page, config.getPageElementLocators().getCaptchaImageXpaths());
         if (captchaImg == null) {
             return null;
@@ -55,25 +54,33 @@ public class TryBreakCaptchaAction extends AbstractAction {
         File imgFile = null;
         try {
             imgFile = new File(String.format(IMG_FILE_FORMAT, randomUUID()));
-            if (!imgFile.getParentFile().exists()) {
-                imgFile.getParentFile().mkdirs();
+            File directory = imgFile.getParentFile();
+            if (!directory.exists()) {
+                if (!directory.mkdirs()) {
+                    LOGGER.warn("Failed to make directory {}", directory.getCanonicalPath());
+                }
+
             }
             captchaImg.saveAs(imgFile);
-            String text = captchaSolver.solve(imgFile);
-            return text;
+            return captchaSolver.solve(imgFile);
         } catch (Throwable e) {
             LOGGER.error("Failed to resolve captcha on %s", page.getUrl(), e);
             throw e;
         } finally {
             if (imgFile != null) {
-                imgFile.delete();
+                if (!imgFile.delete()) {
+                    LOGGER.warn("Failed to delete captcha {}", imgFile.getCanonicalPath());
+                }
             }
         }
     }
 
-    public boolean inputCaptchaText(HtmlPage page, String captchaText) throws IOException {
+    private boolean inputCaptchaText(HtmlPage page, String captchaText) throws IOException {
         return HtmlUnitUtils.inputFirstByXPaths(page, captchaText, config.getPageElementLocators().getCaptchaInputXpaths());
     }
 
-
+    @Autowired
+    public void setCaptchaSolver(CaptchaSolver captchaSolver) {
+        this.captchaSolver = captchaSolver;
+    }
 }

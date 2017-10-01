@@ -1,6 +1,6 @@
 #Target mobile phone numbers
 targets:
-       - 13000000000
+       - 10000000000
 #Number of threads used for sending SMS
 threads: 20
 #Timeout of sending SMS,90000 ms by default
@@ -89,7 +89,7 @@ report-file-name-format: report/report_%s.json
 #A records file will be created after a task completes,the placeholder in the file name format is the task id
 #Takes effect when data source type is CRAWLER or FILE
 records-file-name-format: report/records_%s.rr
-#Key website file stores every website by which Yogg ever sent SMS successfully,it is shared by all tasks
+#Key website file stores website by which Yogg sent SMS successfully,it is shared by all tasks
 #Takes effect when data source type is CRAWLER or FILE
 key-website-file-name: key_websites.kw
 #Local file for saving current settings
