@@ -10,36 +10,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.SpiderListener;
-import us.codecraft.webmagic.monitor.SpiderMonitor;
-import us.codecraft.webmagic.pipeline.FilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Default website crawler
  *
  * @author joybean
  */
-@Service
+@Component
 public class DefaultWebsiteCrawler implements WebsiteCrawler {
     private final static Logger LOGGER = LoggerFactory
             .getLogger(DefaultWebsiteCrawler.class);
     private static final int EXPECTED_WEBSITE_NUM = 100000;
 
-    @Autowired
-    @Qualifier("defaultPageProcessor")
     private PageProcessor pageProcessor;
-    @Autowired
     private WebsitePersistentPipeline persistencePipeline;
-    @Autowired
     private CrawlerDataSource crawlerDataSource;
 
     @Override
@@ -70,5 +63,21 @@ public class DefaultWebsiteCrawler implements WebsiteCrawler {
             LOGGER.error("Failed to launch alexa crawler", e);
             throw new YoggException(e);
         }
+    }
+
+    @Autowired
+    @Qualifier("defaultPageProcessor")
+    public void setPageProcessor(PageProcessor pageProcessor) {
+        this.pageProcessor = pageProcessor;
+    }
+
+    @Autowired
+    public void setPersistencePipeline(WebsitePersistentPipeline persistencePipeline) {
+        this.persistencePipeline = persistencePipeline;
+    }
+
+    @Autowired
+    public void setCrawlerDataSource(CrawlerDataSource crawlerDataSource) {
+        this.crawlerDataSource = crawlerDataSource;
     }
 }
