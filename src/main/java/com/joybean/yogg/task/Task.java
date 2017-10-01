@@ -98,7 +98,9 @@ public class Task implements Serializable {
     }
 
     public void setNextExecutionTime(Date nextExecutionTime) {
-        if (nextExecutionTime != null) {
+        if (nextExecutionTime == null) {
+            this.nextExecutionTime = null;
+        } else {
             this.nextExecutionTime = new Date(nextExecutionTime.getTime());
         }
     }
@@ -112,7 +114,9 @@ public class Task implements Serializable {
     }
 
     public void setCreateTime(Date createTime) {
-        if (createTime != null) {
+        if (createTime == null) {
+            this.createTime = null;
+        } else {
             this.createTime = new Date(createTime.getTime());
         }
     }
