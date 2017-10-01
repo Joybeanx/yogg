@@ -14,7 +14,7 @@ import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.STATE_M
 
 /**
  * Action of jumping to target page.
- * <p> A target page is the page on which we attempt to send SMS,such as a register page.</p>
+ * <p> A target page is the page on which we attempt to send SMS,such as a registration page.</p>
  *
  * @author jobean
  */
