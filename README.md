@@ -64,7 +64,7 @@ Go to the [release page](https://github.com/Joybeanx/yogg/releases) to download 
     + File: supply website stored in file
         - file path: the local website file
     + Database:you should execute [SQL script](scripts "scripts") to initialize your database first
-        - type: the data source type,Currently only supports MySQL
+        - type: the data source type,currently only supports MySQL
         - username: the username of database
         - password: the password of database
 
@@ -87,7 +87,7 @@ Limitations
 
 * In view of the existence of an extremely variety of websites on the Internet, Yogg is definitely unable to adapt to of them.
  The execution flow with default configuration has a very limited capability, the page element matching rules apply only to the
- **Chinese website andChinese phone number**.If there is any special requirement,please customize the execution flow and
+ **Chinese website and Chinese phone number**.If there is any special requirement,please customize the execution flow and
  page element matching rules to increase Yogg accuracy rate.
 * The built-in captcha recognition engine is [Tesseract](https://github.com/tesseract-ocr/tesseract). It seems that
 Tesseract doesn't work well when it processes complex captcha,greatly impacting the effect of sending SMS,nevertheless,
