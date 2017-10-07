@@ -63,7 +63,7 @@ Go to the [release page](https://github.com/Joybeanx/yogg/releases) to download 
         - start url: the url with which crawler starts to collect website
     + File: supply website stored in file
         - file path: the local website file
-    + Database:you should execute [SQL script](scripts "scripts") to initialize your database first
+    + Database:you should execute [SQL Script](scripts "scripts") to initialize your database first
         - type: the data source type,currently only supports MySQL
         - username: the username of database
         - password: the password of database
@@ -71,7 +71,7 @@ Go to the [release page](https://github.com/Joybeanx/yogg/releases) to download 
 ### Startup
 Open command line,enter the directory in which your executable jar located,run:
 
-    java -jar yogg-${version}-RELEASE.jar
+    java -jar yogg-${version}.jar
 
 Building Yogg
 -------------------
