@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>yogg</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
     <properties>
         <spring-statemachine-version>1.2.6.RELEASE</spring-statemachine-version>
         <springsecurity-version>4.0.1.RELEASE</springsecurity-version>
