@@ -1,11 +1,7 @@
 package com.joybean.yogg.datasource;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.joybean.yogg.config.IDataSource;
-import com.joybean.yogg.support.DatabaseDataSourceMixIn;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
