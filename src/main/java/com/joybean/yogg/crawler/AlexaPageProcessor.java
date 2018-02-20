@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Crawler page processor for collecting domains from <a href="http://alexa.cn">alexa.cn</a>
  *
- * @author jobean
+ * @author joybean
  */
 @Component
 public class AlexaPageProcessor extends AbstractPageProcessor {

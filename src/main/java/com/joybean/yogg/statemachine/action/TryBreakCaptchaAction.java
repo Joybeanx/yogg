@@ -18,7 +18,7 @@ import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.RECORD_
 import static java.util.UUID.randomUUID;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class TryBreakCaptchaAction extends AbstractAction {

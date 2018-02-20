@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component("taskExecutor")
 public class TaskExecutorImpl extends AbstractTaskExecutor {

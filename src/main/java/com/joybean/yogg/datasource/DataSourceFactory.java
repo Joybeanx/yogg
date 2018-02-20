@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Map;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class DataSourceFactory {
 

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @MappedJdbcTypes(value = JdbcType.TINYINT, includeNullJdbcType = true)
 public class DefaultEnumTypeHandler extends BaseTypeHandler<EnumValue> {

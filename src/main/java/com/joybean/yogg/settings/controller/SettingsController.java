@@ -41,7 +41,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import static com.joybean.yogg.support.UrlUtils.isValid;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Controller
 @Lazy

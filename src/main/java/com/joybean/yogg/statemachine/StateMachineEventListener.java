@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
 import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class StateMachineEventListener extends StateMachineListenerAdapter<String, String> {
     private final static Logger LOGGER = LoggerFactory

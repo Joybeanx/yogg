@@ -19,7 +19,7 @@ import java.util.Random;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest

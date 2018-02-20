@@ -3,13 +3,10 @@
  */
 package com.joybean.yogg.website.service;
 
-import com.joybean.yogg.config.YoggConfig;
-import com.joybean.yogg.datasource.DataSourceType;
 import com.joybean.yogg.support.Pagination;
 import com.joybean.yogg.support.YoggException;
 import com.joybean.yogg.website.Website;
 import com.joybean.yogg.website.dao.WebsiteStore;
-import com.joybean.yogg.website.dao.WebsiteStoreFactory;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +27,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     private final static Logger LOGGER = LoggerFactory
             .getLogger(WebsiteServiceImpl.class);
     @Autowired
-    private YoggConfig config;
-    @Autowired
-    private WebsiteStoreFactory websiteStoreFactory;
+    private WebsiteStore websiteStore;
 
     @Override
     public void insertWebsite(Website... websites) {
@@ -46,7 +41,7 @@ public class WebsiteServiceImpl implements WebsiteService {
             if (CollectionUtils.isEmpty(websites)) {
                 return;
             }
-            getWebSiteStore().insertWebsite(websites);
+            websiteStore.insertWebsite(websites);
         } catch (Exception e) {
             LOGGER.error("Failed to insert websites", e);
             throw new YoggException(e);
@@ -75,7 +70,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     public void replaceWebsite(List<Website> websites) {
         Assert.notNull(websites, "Websites must not be null");
         try {
-            getWebSiteStore().replaceWebsite(websites);
+            websiteStore.replaceWebsite(websites);
         } catch (Exception e) {
             LOGGER.error("Failed to replace websites", e);
             throw new YoggException(e);
@@ -85,7 +80,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<Website> fetchWebsite(Pagination pagination) {
         try {
-            return getWebSiteStore().fetchWebsite(pagination);
+            return websiteStore.fetchWebsite(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch website urls", e);
             throw new YoggException(e);
@@ -95,7 +90,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<String> fetchWebsiteUrls(Pagination pagination) {
         try {
-            return getWebSiteStore().fetchWebsiteUrl(pagination);
+            return websiteStore.fetchWebsiteUrl(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch website", e);
             throw new YoggException(e);
@@ -104,7 +99,7 @@ public class WebsiteServiceImpl implements WebsiteService {
 
     public long countWebsite() {
         try {
-            return getWebSiteStore().countWebsite();
+            return websiteStore.countWebsite();
         } catch (Exception e) {
             LOGGER.error("Failed to count website", e);
             throw new YoggException(e);
@@ -123,7 +118,7 @@ public class WebsiteServiceImpl implements WebsiteService {
             if (CollectionUtils.isEmpty(websites)) {
                 return;
             }
-            getWebSiteStore().insertKeyWebsite(websites);
+            websiteStore.insertKeyWebsite(websites);
         } catch (Exception e) {
             LOGGER.error("Failed to insert key websites", e);
             throw new YoggException(e);
@@ -155,7 +150,7 @@ public class WebsiteServiceImpl implements WebsiteService {
             if (CollectionUtils.isEmpty(websites)) {
                 return;
             }
-            getWebSiteStore().replaceKeyWebsite(websites);
+            websiteStore.replaceKeyWebsite(websites);
         } catch (Exception e) {
             LOGGER.error("Failed to replace key websites", e);
             throw new YoggException(e);
@@ -165,7 +160,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<Website> fetchKeyWebsite(Pagination pagination) {
         try {
-            return getWebSiteStore().fetchKeyWebsite(pagination);
+            return websiteStore.fetchKeyWebsite(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch key website", e);
             throw new YoggException(e);
@@ -175,7 +170,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<String> fetchKeyWebsiteUrls(Pagination pagination) {
         try {
-            return getWebSiteStore().fetchKeyWebsiteUrl(pagination);
+            return websiteStore.fetchKeyWebsiteUrl(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch key website urls", e);
             throw new YoggException(e);
@@ -184,7 +179,7 @@ public class WebsiteServiceImpl implements WebsiteService {
 
     public long countKeyWebsite() {
         try {
-            return getWebSiteStore().countKeyWebsite();
+            return websiteStore.countKeyWebsite();
         } catch (Exception e) {
             LOGGER.error("Failed to count key website.", e);
             throw new YoggException(e);
@@ -192,16 +187,9 @@ public class WebsiteServiceImpl implements WebsiteService {
     }
 
     public void shutdown() {
-        getWebSiteStore().shutdown();
+        websiteStore.shutdown();
     }
 
-    private WebsiteStore getWebSiteStore() {
-        WebsiteStore websiteStore = websiteStoreFactory.getInstance(config.getDataSource().getDataSourceType());
-        if (websiteStore == null) {
-            websiteStore = websiteStoreFactory.getInstance(DataSourceType.FILE);
-        }
-        return websiteStore;
-    }
 
 
 }

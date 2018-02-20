@@ -9,10 +9,10 @@ import org.springframework.util.Assert;
 
 import java.util.LinkedList;
 
-import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
+import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.STATE_MACHINE_INPUT_TARGET_PHONE_NUMBER;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class InputPhoneNumberAction extends AbstractAction {

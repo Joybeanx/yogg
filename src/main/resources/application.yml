@@ -68,30 +68,27 @@ crawler-datasource:
         #Retry sleep time when download failed, 60000 ms by default
         retry-sleep-time: 60000
 
-#Databse configuration,only needed when data source type is DATABASE,please ensure sql script has been executed in the database and your data has been imported to website table
+#Databse configuration,,please ensure your data has been imported to website table when data source type is DATABASE
 database-datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        url:
-        username:
-        password:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:~/yogg
+        username: yogg
+        password: yogg
         initial-size: 10
         max-total: 20
         min-idle: 5
         time-between-eviction-runs-millis: 60000
         max-wait-millis: 10000
 
+spring:
+  h2:
+    console:
+      enabled: true
+
 #Mybatis configurations,only needed when data source type is DATABASE
 mybatis:
         config-location: classpath:mybatis-config.xml
 
-#A local report file will be created after a task completes,the placeholder in the file name format is the task id
-report-file-name-format: report/report_%s.json
-#A records file will be created after a task completes,the placeholder in the file name format is the task id
-#Takes effect when data source type is CRAWLER or FILE
-records-file-name-format: report/records_%s.rr
-#Key website file stores website by which Yogg sent SMS successfully,it is shared by all tasks
-#Takes effect when data source type is CRAWLER or FILE
-key-website-file-name: key_websites.kw
 #Local file for saving current settings
 settings-file-name: settings.json
 #Local file for saving current task configuration

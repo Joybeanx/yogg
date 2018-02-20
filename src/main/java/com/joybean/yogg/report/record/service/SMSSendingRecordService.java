@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public interface SMSSendingRecordService {
     void insertSMSSendingRecord(SMSSendingRecord... smsSendingRecords);

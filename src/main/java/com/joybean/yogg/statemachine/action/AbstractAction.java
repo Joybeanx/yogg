@@ -11,7 +11,7 @@ import org.springframework.statemachine.support.AbstractStateMachine;
 import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public abstract class AbstractAction extends AbstractComponent implements Action<String, String> {
     private final static Logger LOGGER = LoggerFactory

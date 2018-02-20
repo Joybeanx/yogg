@@ -14,7 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public abstract class AbstractComponent {
 

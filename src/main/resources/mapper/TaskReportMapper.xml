@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.joybean.yogg.mapper.TaskReportMapper">
+    <resultMap
+            type="TaskReport"
+            id="TaskReportMap"/>
+    <select
+            id="queryTaskReport"
+            resultType="java.lang.String">
+        select
+        content
+        from
+        task_report
+        where task_id = #{taskId}
+    </select>
+
+    <insert id="insertTaskReport">
+        insert into task_report
+        (task_id,content)
+        values
+        <foreach
+                collection="taskReports"
+                item="taskReport"
+                index="index"
+                separator=",">
+            (#{taskReport.taskId},#{taskReport.content})
+        </foreach>
+    </insert>
+
+    <update
+            id="deleteTaskReport">
+        delete from task_report where task_id=#{taskId}
+    </update>
+
+</mapper>

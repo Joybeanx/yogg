@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * A task that executed by {@link TaskExecutor}
  *
- * @author jobean
+ * @author joybean
  */
 public class Task implements Serializable {
 

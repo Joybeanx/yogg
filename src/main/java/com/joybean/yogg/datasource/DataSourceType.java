@@ -3,7 +3,7 @@ package com.joybean.yogg.datasource;
 import com.joybean.yogg.support.EnumValue;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public enum DataSourceType implements EnumValue {
     CRAWLER(0), FILE(1), DATABASE(2);

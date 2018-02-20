@@ -15,7 +15,7 @@ import static com.joybean.yogg.support.UrlUtils.*;
 /**
  * Default crawler page processor which would collect every link the crawler find
  *
- * @author jobean
+ * @author joybean
  */
 @Component
 public class DefaultPageProcessor extends AbstractPageProcessor {

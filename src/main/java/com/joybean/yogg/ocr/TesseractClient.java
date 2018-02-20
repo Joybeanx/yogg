@@ -21,7 +21,7 @@ import static org.bytedeco.javacpp.tesseract.PSM_SINGLE_LINE;
 
 /**
  * A captcha solver implementation of <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a>
- * @author jobean
+ * @author joybean
  */
 @Service
 public class TesseractClient implements CaptchaSolver {

@@ -6,11 +6,11 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.LinkedList;
 
-import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
+import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.STATE_MACHINE_INPUT_TARGET_PHONE_NUMBER;
 
 /**
  * A guard indicates whether there is more target phone number to process
- * @author jobean
+ * @author joybean
  */
 @Component
 public class HasNextTargetGuard extends AbstractGuard {

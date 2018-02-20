@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class ScheduledTaskExecutor extends AbstractTaskExecutor {

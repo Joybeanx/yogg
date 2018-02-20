@@ -9,7 +9,7 @@ import org.springframework.statemachine.StateContext;
 import java.util.List;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public abstract class ClickAction extends AbstractAction {
 

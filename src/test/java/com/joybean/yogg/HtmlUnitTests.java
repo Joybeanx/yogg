@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class HtmlUnitTests {
 

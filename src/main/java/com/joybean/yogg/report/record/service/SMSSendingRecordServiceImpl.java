@@ -1,11 +1,8 @@
 package com.joybean.yogg.report.record.service;
 
-import com.joybean.yogg.config.YoggConfig;
-import com.joybean.yogg.datasource.DataSourceType;
 import com.joybean.yogg.report.record.RecordStatus;
 import com.joybean.yogg.report.record.SMSSendingRecord;
 import com.joybean.yogg.report.record.dao.SMSSendingRecordStore;
-import com.joybean.yogg.report.record.dao.SMSSendingRecordStoreFactory;
 import com.joybean.yogg.support.Pagination;
 import com.joybean.yogg.support.YoggException;
 import org.slf4j.Logger;
@@ -20,21 +17,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Service
 public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
     private final static Logger LOGGER = LoggerFactory
             .getLogger(SMSSendingRecordService.class);
     @Autowired
-    private YoggConfig config;
-    @Autowired
-    private SMSSendingRecordStoreFactory smsSendingRecordStoreFactory;
+    private SMSSendingRecordStore recordSore;
 
     @Override
     public void insertSMSSendingRecord(SMSSendingRecord... smsSendingRecords) {
         try {
-            getRecordStore().insertSMSSendingRecord(smsSendingRecords);
+            recordSore.insertSMSSendingRecord(smsSendingRecords);
         } catch (Exception e) {
             LOGGER.error("Failed to insert record", e);
             throw new YoggException(e);
@@ -44,7 +39,7 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
     @Override
     public void replaceSMSSendingRecord(SMSSendingRecord... smsSendingRecords) {
         try {
-            getRecordStore().replaceSMSSendingRecord(smsSendingRecords);
+            recordSore.replaceSMSSendingRecord(smsSendingRecords);
         } catch (Exception e) {
             LOGGER.error("Failed to replace record", e);
             throw new YoggException(e);
@@ -66,7 +61,7 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
             recordStatuses = new RecordStatus[0];
         }
         try {
-            return getRecordStore().fetchSMSSendingRecord(taskId, website, pagination, recordStatuses);
+            return recordSore.fetchSMSSendingRecord(taskId, website, pagination, recordStatuses);
         } catch (Exception e) {
             LOGGER.error("Failed to query record of task[{}] by website[{}],{} and {}",
                     taskId, website, Arrays.asList(recordStatuses), pagination, e);
@@ -88,7 +83,7 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
     public List<String> fetchRecordWebsite(String taskId, Pagination pagination, RecordStatus... statuses) {
         Assert.notNull(taskId, "Task id must not be null");
         try {
-            return getRecordStore().fetchRecordWebsite(taskId, pagination, statuses);
+            return recordSore.fetchRecordWebsite(taskId, pagination, statuses);
         } catch (Exception e) {
             LOGGER.error("Failed to query record website of task[{}] by {} and {}", taskId, pagination,
                     Arrays.asList(statuses), e);
@@ -105,7 +100,7 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
             recordStatuses = new RecordStatus[0];
         }
         try {
-            return getRecordStore().countSMSSendingRecord(taskId, name, recordStatuses);
+            return recordSore.countSMSSendingRecord(taskId, name, recordStatuses);
         } catch (Exception e) {
             LOGGER.error("Failed to count record of task[{}] by {}", taskId,
                     Arrays.asList(recordStatuses), e);
@@ -117,7 +112,7 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
     public Map<RecordStatus, Long> countSMSSendingRecordByStatus(String taskId) {
         Assert.notNull(taskId, "Task id must not be null");
         try {
-            return getRecordStore().countSMSSendingRecordByStatus(taskId);
+            return recordSore.countSMSSendingRecordByStatus(taskId);
         } catch (Exception e) {
             LOGGER.error("Failed to count record of task[{}]", taskId, e);
             throw new YoggException(e);
@@ -128,7 +123,7 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
     public boolean ifSMSSendingRecordExist(String taskId) {
         Assert.notNull(taskId, "Task id must not be null");
         try {
-            return getRecordStore().ifSMSSendingRecordExist(taskId);
+            return recordSore.ifSMSSendingRecordExist(taskId);
         } catch (Exception e) {
             LOGGER.error("Failed to decide if record of task[{}] exist", taskId, e);
             throw new YoggException(e);
@@ -139,18 +134,10 @@ public class SMSSendingRecordServiceImpl implements SMSSendingRecordService {
     public void clearSMSSendingRecord(String taskId) {
         Assert.notNull(taskId, "Task id must not be null");
         try {
-            getRecordStore().clearSMSSendingRecord(taskId);
+            recordSore.clearSMSSendingRecord(taskId);
         } catch (Exception e) {
             LOGGER.error("Failed to clear record of task[{}]", taskId, e);
             throw new YoggException(e);
         }
-    }
-
-    private SMSSendingRecordStore getRecordStore() {
-        SMSSendingRecordStore recordStore = smsSendingRecordStoreFactory.getInstance(config.getDataSource().getDataSourceType());
-        if (recordStore == null) {
-            recordStore = smsSendingRecordStoreFactory.getInstance(DataSourceType.FILE);
-        }
-        return recordStore;
     }
 }

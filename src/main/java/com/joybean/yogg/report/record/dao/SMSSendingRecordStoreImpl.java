@@ -1,6 +1,5 @@
 package com.joybean.yogg.report.record.dao;
 
-import com.joybean.yogg.datasource.DataSourceType;
 import com.joybean.yogg.report.record.RecordStatus;
 import com.joybean.yogg.report.record.SMSSendingRecord;
 import com.joybean.yogg.support.EnumValue;
@@ -16,14 +15,14 @@ import java.util.stream.Collectors;
 import static com.google.common.collect.ImmutableMap.of;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Repository
-public class SMSSendingRecordDataBaseStore extends AbstractSMSSendingRecordStore {
+public class SMSSendingRecordStoreImpl implements SMSSendingRecordStore {
 
     private final SqlSession sqlSession;
 
-    public SMSSendingRecordDataBaseStore(SqlSession sqlSession) {
+    public SMSSendingRecordStoreImpl(SqlSession sqlSession) {
         this.sqlSession = sqlSession;
     }
 
@@ -71,10 +70,5 @@ public class SMSSendingRecordDataBaseStore extends AbstractSMSSendingRecordStore
     @Override
     public void clearSMSSendingRecord(String taskId) {
         sqlSession.update("deleteSMSSendingRecord", of("taskId", taskId));
-    }
-
-    @Override
-    protected DataSourceType getType() {
-        return DataSourceType.DATABASE;
     }
 }

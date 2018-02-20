@@ -31,7 +31,5 @@ public interface ReportService {
 
     boolean isTaskReportComplete(String taskId);
 
-    boolean isTaskReportExistent(String taskId);
-
     void clearTaskReport(String taskId);
 }

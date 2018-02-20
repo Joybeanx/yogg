@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.Serializable;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class Proxy implements Serializable {
     private static final long serialVersionUID = 948386797888869135L;

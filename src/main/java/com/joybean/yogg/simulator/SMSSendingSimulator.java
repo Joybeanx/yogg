@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Simulator that simulates user operations of sending SMS by website SMS gateway.
  *
- * @author jobean
+ * @author joybean
  */
 public interface SMSSendingSimulator {
     /**

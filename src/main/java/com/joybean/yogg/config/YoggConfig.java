@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 @ConfigurationProperties
@@ -49,28 +49,11 @@ public class YoggConfig implements Serializable {
      * Necessary page element locators for sending SMS,such as phone number input,sending button,etc
      */
     private PageElementLocators pageElementLocators = new PageElementLocators();
-    /**
-     * A local report file will be created after a task completes,the placeholder in the file name format the task id
-     */
-    private String reportFileNameFormat;
-    /**
-     * A records file will be created after a task completes,the placeholder in the file name format the task id<br/>
-     * #Takes effect when data source type is CRAWLER or FILE
-     */
-    private String recordsFileNameFormat;
-    /**
-     * Key website file stores website by which Yogg sent SMS successfully,it is shared by all tasks<br/>
-     * Takes effect when data source type is CRAWLER or FILE
-     */
-    private String keyWebsiteFileName;
+
     /**
      * Local file for saving current settings
      */
     private String settingsFileName;
-    /**
-     * Local file name for saving task config
-     */
-    private String taskFileName;
 
     /**
      * Load custom configuration from file and override corresponding default value.
@@ -97,7 +80,7 @@ public class YoggConfig implements Serializable {
         }
     }
 
-    public static class PageElementLocators implements Serializable{
+    public static class PageElementLocators implements Serializable {
         private static final long serialVersionUID = -5070295430618253722L;
         /**
          * XPaths for finding a link of target page,such as XPath of register link on home page
@@ -218,44 +201,12 @@ public class YoggConfig implements Serializable {
         this.dataSource = dataSource;
     }
 
-    public String getRecordsFileNameFormat() {
-        return recordsFileNameFormat;
-    }
-
-    public void setRecordsFileNameFormat(String recordsFileNameFormat) {
-        this.recordsFileNameFormat = recordsFileNameFormat;
-    }
-
-    public String getKeyWebsiteFileName() {
-        return keyWebsiteFileName;
-    }
-
-    public void setKeyWebsiteFileName(String keyWebsiteFileName) {
-        this.keyWebsiteFileName = keyWebsiteFileName;
-    }
-
-    public String getReportFileNameFormat() {
-        return reportFileNameFormat;
-    }
-
-    public void setReportFileNameFormat(String reportFileNameFormat) {
-        this.reportFileNameFormat = reportFileNameFormat;
-    }
-
     public String getSettingsFileName() {
         return settingsFileName;
     }
 
     public void setSettingsFileName(String settingsFileName) {
         this.settingsFileName = settingsFileName;
-    }
-
-    public String getTaskFileName() {
-        return taskFileName;
-    }
-
-    public void setTaskFileName(String taskFileName) {
-        this.taskFileName = taskFileName;
     }
 
     public void setProxy(Proxy proxy) {

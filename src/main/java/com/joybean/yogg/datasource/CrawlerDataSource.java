@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Crawler data source that supplies website urls
- * @author jobean
+ * @author joybean
  */
 @Component
 @ConfigurationProperties(prefix = "crawler-datasource")

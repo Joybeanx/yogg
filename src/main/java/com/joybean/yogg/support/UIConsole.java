@@ -10,7 +10,7 @@ import java.io.OutputStream;
 /**
  * Handle output for UI console while {@link com.joybean.yogg.task.executor.InstantTaskExecutor} is running
  *
- * @author jobean
+ * @author joybean
  */
 public class UIConsole extends OutputStream {
     private final static String LOG_SEPARATOR = "\n";

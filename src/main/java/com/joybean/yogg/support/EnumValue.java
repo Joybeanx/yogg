@@ -1,7 +1,7 @@
 package com.joybean.yogg.support;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public interface EnumValue {
     int getValue();

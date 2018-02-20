@@ -5,7 +5,7 @@ import javafx.concurrent.Task;
 import java.util.concurrent.ScheduledFuture;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class TaskContext {
     private Task<?> jfxTask;

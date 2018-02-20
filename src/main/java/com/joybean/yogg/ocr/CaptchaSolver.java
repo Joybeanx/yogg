@@ -9,7 +9,7 @@ import java.io.File;
  *   The captcha solver is used for trying to defeat the captcha.
  * </p>
  *
- * @author jobean
+ * @author joybean
  */
 public interface CaptchaSolver {
     /**

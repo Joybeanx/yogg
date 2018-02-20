@@ -3,7 +3,6 @@
  */
 package com.joybean.yogg.website.dao;
 
-import com.joybean.yogg.datasource.DataSourceType;
 import com.joybean.yogg.support.Pagination;
 import com.joybean.yogg.website.Website;
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +13,7 @@ import java.util.List;
 import static com.google.common.collect.ImmutableMap.of;
 
 @Repository
-public class DatabaseWebsiteStore extends AbstractWebsiteStore {
+public class DatabaseWebsiteStore implements WebsiteStore {
     private final SqlSession sqlSession;
 
     public DatabaseWebsiteStore(SqlSession sqlSession) {
@@ -77,10 +76,5 @@ public class DatabaseWebsiteStore extends AbstractWebsiteStore {
     @Override
     public void shutdown() {
         //no operation
-    }
-
-    @Override
-    protected DataSourceType getType() {
-        return DataSourceType.DATABASE;
     }
 }

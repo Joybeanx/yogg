@@ -2,6 +2,7 @@ package com.joybean.yogg.report;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joybean.yogg.report.record.SMSSendingRecord;
+import com.joybean.yogg.support.JsonUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * A task report is generated after task is complete or failed or cancelled
  *
- * @author jobean
+ * @author joybean
  */
 public class TaskReport implements Serializable {
     private static final long serialVersionUID = -1311918924778536152L;
@@ -135,6 +136,11 @@ public class TaskReport implements Serializable {
 
     public void setComplete(boolean complete) {
         isComplete = complete;
+    }
+
+    public String getContent() {
+        String content = JsonUtils.bean2PrettyJson(this);
+        return content;
     }
 
     @Override

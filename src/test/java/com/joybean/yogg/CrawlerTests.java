@@ -1,6 +1,5 @@
 package com.joybean.yogg;
 
-import com.joybean.yogg.datasource.CrawlerDataSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +12,8 @@ import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
-import java.net.URL;
-import java.util.List;
-
 /**
- * @author jobean
+ * @author joybean
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest

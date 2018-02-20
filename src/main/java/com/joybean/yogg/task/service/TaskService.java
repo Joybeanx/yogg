@@ -6,7 +6,7 @@ import com.joybean.yogg.task.Task;
 import java.util.List;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public interface TaskService {
     List<Task> queryTask(String taskId);

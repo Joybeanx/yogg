@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
 import java.util.concurrent.Callable;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class JFXUtils {
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class ClickSendButtonAction extends ClickAction {

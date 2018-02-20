@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class ResendAction extends ClickSendButtonAction {

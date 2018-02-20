@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * File data source that supplies website urls
  *
- * @author jobean
+ * @author joybean
  */
 @Component
 @ConfigurationProperties(prefix = "file-datasource")

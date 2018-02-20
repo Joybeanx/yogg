@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Database data source that stores websites and sending records
- * @author jobean
+ * @author joybean
  */
 @Component
 @ConfigurationProperties(prefix = "database-datasource")

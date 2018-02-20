@@ -9,7 +9,7 @@ import com.joybean.yogg.datasource.DatabaseDataSource;
 import com.joybean.yogg.datasource.FileDataSource;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,

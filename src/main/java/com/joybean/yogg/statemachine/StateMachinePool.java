@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class StateMachinePool extends GenericObjectPool<StateMachine<String, String>> {

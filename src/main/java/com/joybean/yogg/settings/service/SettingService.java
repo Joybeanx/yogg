@@ -3,7 +3,7 @@ package com.joybean.yogg.settings.service;
 import com.joybean.yogg.config.YoggConfig;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public interface SettingService {
     /**

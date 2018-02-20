@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class InstanceFactory<K, V> {
     private final Map<K, V> instances = new HashMap<>();

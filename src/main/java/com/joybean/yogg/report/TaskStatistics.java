@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Statistics data of a task
  *
- * @author jobean
+ * @author joybean
  */
 public class TaskStatistics implements Serializable {
     private String taskId;

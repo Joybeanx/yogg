@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class PooledStateMachineFactory extends BasePooledObjectFactory<StateMachine<String, String>> {

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class InstantTaskExecutor extends AbstractTaskExecutor {

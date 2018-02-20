@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * A proxy for displaying url link pattern in sending record table
- * @author jobean
+ * @author joybean
  */
 public class SMSSendingRecordProxy {
     private SMSSendingRecord smsSendingRecord;

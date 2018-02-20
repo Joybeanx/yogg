@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class InitWebClientAction extends AbstractAction {

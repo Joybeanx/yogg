@@ -12,7 +12,7 @@ import org.springframework.util.Assert;
 import static com.joybean.yogg.statemachine.StateMachineConfig.Constants.*;
 
 /**
- * @author jobean
+ * @author joybean
  */
 @Component
 public class VisitHomePageAction extends AbstractAction {

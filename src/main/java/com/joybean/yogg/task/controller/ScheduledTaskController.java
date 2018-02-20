@@ -3,7 +3,7 @@ package com.joybean.yogg.task.controller;
 import com.joybean.yogg.view.FxmlView;
 import com.joybean.yogg.view.ViewManager;
 import javafx.event.ActionEvent;
-import javafx.scene.control.*;
+import javafx.scene.control.SplitPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.io.IOException;
  * Scheduled task controller<p/>
  * A scheduled task is the task triggered by scheduler
  *
- * @author jobean
+ * @author joybean
  */
 @Controller
 @Lazy

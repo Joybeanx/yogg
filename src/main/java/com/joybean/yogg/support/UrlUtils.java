@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public class UrlUtils {
     private final static Logger LOGGER = LoggerFactory

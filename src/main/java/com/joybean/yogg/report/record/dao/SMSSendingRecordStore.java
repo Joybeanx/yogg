@@ -3,13 +3,12 @@ package com.joybean.yogg.report.record.dao;
 import com.joybean.yogg.report.record.RecordStatus;
 import com.joybean.yogg.report.record.SMSSendingRecord;
 import com.joybean.yogg.support.Pagination;
-import com.sun.prism.impl.Disposer;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author jobean
+ * @author joybean
  */
 public interface SMSSendingRecordStore {
 
