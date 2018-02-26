@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS website (
   url VARCHAR(255) COMMENT 'website url',
   PRIMARY KEY (url)
 );
-COMMENT ON TABLE key_website IS 'Tale stores website from which Yogg can take';
+COMMENT ON TABLE website IS 'Tale stores website from which Yogg can take';
 
 CREATE TABLE IF NOT EXISTS key_website (
   url VARCHAR(255) COMMENT 'key website url',
@@ -12,10 +12,10 @@ COMMENT ON TABLE key_website IS 'Table used for testing stores website by which 
 
 CREATE TABLE IF NOT EXISTS task_report (
   task_id VARCHAR(36) COMMENT 'task id that current report belongs to',
-  PRIMARY KEY (url),
+  PRIMARY KEY (task_id),
   content VARCHAR(65535) COMMENT 'report content'
 );
-COMMENT ON TABLE key_website IS 'Tale stores website from which Yogg can take';
+COMMENT ON TABLE task_report IS 'Table stores website from which Yogg can take';
 
 CREATE TABLE IF NOT EXISTS sms_sending_record (
   website         VARCHAR(255) COMMENT 'the website by which we send SMS to',
@@ -30,5 +30,5 @@ CREATE TABLE IF NOT EXISTS sms_sending_record (
   create_time     DATETIME COMMENT 'the create time of current record',
   PRIMARY KEY (website, task_id)
 );
-COMMENT ON TABLE key_website IS 'Table stores SMS sending details for every website';
+COMMENT ON TABLE sms_sending_record IS 'Table stores SMS sending details for every website';
 

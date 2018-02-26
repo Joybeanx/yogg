@@ -138,6 +138,7 @@ public class TaskReport implements Serializable {
         isComplete = complete;
     }
 
+    @JsonIgnore
     public String getContent() {
         String content = JsonUtils.bean2PrettyJson(this);
         return content;
@@ -183,7 +184,7 @@ public class TaskReport implements Serializable {
         result = 31 * result + (getStatistics() != null ? getStatistics().hashCode() : 0);
         result = 31 * result + (getException() != null ? getException().hashCode() : 0);
         result = 31 * result + getStartTime().hashCode();
-        result = 31 * result + getFinishTime().hashCode();
+        result = 31 * result + (getFinishTime() != null ? getFinishTime().hashCode() : 0);
         result = 31 * result + (isComplete() ? 1 : 0);
         return result;
     }

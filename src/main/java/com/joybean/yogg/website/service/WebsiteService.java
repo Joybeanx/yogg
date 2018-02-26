@@ -13,23 +13,11 @@ import java.util.List;
  */
 public interface WebsiteService {
 
-    void insertWebsite(Website... websites);
-
-    void insertWebsite(List<Website> websites);
-
-    void insertWebsite(String[] urls);
-
-    void insertWebsite_(List<String> urls);
-
-    void replaceWebsite(Website... websites);
-
-    void replaceWebsite(List<Website> websites);
+    void putWebsite(List<String> urls);
 
     List<Website> fetchWebsite(Pagination pagination);
 
     List<String> fetchWebsiteUrls(Pagination pagination);
-
-    long countWebsite();
 
     void insertKeyWebsite(Website... websites);
 

@@ -9,15 +9,11 @@ import com.joybean.yogg.support.Pagination;
 import java.util.List;
 
 public interface WebsiteStore {
-    void insertWebsite(List<Website> websites);
-
-    void replaceWebsite(List<Website> websites);
+    void putWebsite(List<Website> websites);
 
     List<Website> fetchWebsite(Pagination pagination);
 
     List<String> fetchWebsiteUrl(Pagination pagination);
-
-    long countWebsite();
 
     void insertKeyWebsite(List<Website> websites);
 

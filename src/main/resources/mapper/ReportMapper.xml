@@ -34,4 +34,9 @@
         delete from task_report where task_id=#{taskId}
     </update>
 
+    <insert
+            id="updateTaskReport">
+        merge into task_report(task_id,content) key(task_id) values(#{taskId},#{content})
+    </insert>
+
 </mapper>

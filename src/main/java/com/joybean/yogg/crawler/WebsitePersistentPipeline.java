@@ -33,7 +33,7 @@ public class WebsitePersistentPipeline implements Pipeline {
             if (extractedUrls == null) {
                 return;
             }
-            websiteService.insertWebsite_(extractedUrls);
+            websiteService.putWebsite(extractedUrls);
         } catch (Exception e) {
             LOGGER.error("Failed to persist website.", e);
             //TODO should we throw exception here?

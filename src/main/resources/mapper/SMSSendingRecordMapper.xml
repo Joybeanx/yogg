@@ -85,8 +85,9 @@
     </insert>
 
     <insert id="replaceSMSSendingRecord">
-        replace into sms_sending_record
+        merge into sms_sending_record
         (website, target_page_url,has_captcha,sms_request_url,exception,status,task_id,create_time)
+        key(website,task_id)
         values
         <foreach
                 collection="array"

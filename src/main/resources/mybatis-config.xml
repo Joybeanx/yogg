@@ -23,5 +23,6 @@
     <mappers>
         <mapper resource="mapper/WebsiteMapper.xml"/>
         <mapper resource="mapper/SMSSendingRecordMapper.xml"/>
+        <mapper resource="mapper/ReportMapper.xml"/>
     </mappers>
 </configuration>

@@ -8,8 +8,7 @@
             id="WebsiteMap"/>
 
     <insert id="replaceWebsite">
-        insert into website
-        (url)
+        merge into website(url) key(url)
         values
         <foreach
                 collection="websites"
@@ -65,8 +64,7 @@
 
 
     <insert id="replaceKeyWebsite">
-        replace into key_website
-        (url)
+        merge into key_website(url) key(url)
         values
         <foreach
                 collection="websites"

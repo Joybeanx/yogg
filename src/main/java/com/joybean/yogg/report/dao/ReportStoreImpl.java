@@ -1,8 +1,11 @@
 package com.joybean.yogg.report.dao;
 
 import com.joybean.yogg.report.TaskReport;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
 
@@ -19,7 +22,11 @@ public class ReportStoreImpl implements ReportStore {
 
     @Override
     public String fetchTaskReport(String taskId) {
-        return sqlSession.selectOne("queryTaskReport", of("taskId", taskId));
+        List<String> reports = sqlSession.selectList("queryTaskReport", of("taskId", taskId));
+        if (CollectionUtils.isNotEmpty(reports)) {
+            return reports.get(0);
+        }
+        return null;
     }
 
     @Override

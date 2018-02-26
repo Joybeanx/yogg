@@ -3,10 +3,13 @@
  */
 package com.joybean.yogg.website.service;
 
+import com.joybean.yogg.config.YoggConfig;
+import com.joybean.yogg.datasource.DataSourceType;
 import com.joybean.yogg.support.Pagination;
 import com.joybean.yogg.support.YoggException;
 import com.joybean.yogg.website.Website;
 import com.joybean.yogg.website.dao.WebsiteStore;
+import com.joybean.yogg.website.dao.WebsiteStoreFactory;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,60 +30,23 @@ public class WebsiteServiceImpl implements WebsiteService {
     private final static Logger LOGGER = LoggerFactory
             .getLogger(WebsiteServiceImpl.class);
     @Autowired
-    private WebsiteStore websiteStore;
+    private WebsiteStoreFactory websiteStoreFactory;
+    @Autowired
+    private YoggConfig config;
+
 
     @Override
-    public void insertWebsite(Website... websites) {
-        insertWebsite(Arrays.asList(websites));
-    }
-
-    @Override
-    public void insertWebsite(List<Website> websites) {
-        Assert.notNull(websites, "Websites must not be null");
-        try {
-            if (CollectionUtils.isEmpty(websites)) {
-                return;
-            }
-            websiteStore.insertWebsite(websites);
-        } catch (Exception e) {
-            LOGGER.error("Failed to insert websites", e);
-            throw new YoggException(e);
-        }
-    }
-
-    @Override
-    public void insertWebsite(String... urls) {
-        List<Website> websites = Stream.of(urls).map(Website::new).collect(Collectors.toList());
-        insertWebsite(websites);
-    }
-
-    @Override
-    public void insertWebsite_(List<String> urls) {
+    public void putWebsite(List<String> urls) {
         Assert.notNull(urls, "Urls must not be null");
         List<Website> websites = urls.stream().map(d -> new Website(d)).collect(Collectors.toList());
-        insertWebsite(websites);
+        getWebsiteStore().putWebsite(websites);
     }
 
-    @Override
-    public void replaceWebsite(Website... websites) {
-        replaceWebsite(Arrays.asList(websites));
-    }
-
-    @Override
-    public void replaceWebsite(List<Website> websites) {
-        Assert.notNull(websites, "Websites must not be null");
-        try {
-            websiteStore.replaceWebsite(websites);
-        } catch (Exception e) {
-            LOGGER.error("Failed to replace websites", e);
-            throw new YoggException(e);
-        }
-    }
 
     @Override
     public List<Website> fetchWebsite(Pagination pagination) {
         try {
-            return websiteStore.fetchWebsite(pagination);
+            return getWebsiteStore().fetchWebsite(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch website urls", e);
             throw new YoggException(e);
@@ -90,18 +56,9 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<String> fetchWebsiteUrls(Pagination pagination) {
         try {
-            return websiteStore.fetchWebsiteUrl(pagination);
+            return getWebsiteStore().fetchWebsiteUrl(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch website", e);
-            throw new YoggException(e);
-        }
-    }
-
-    public long countWebsite() {
-        try {
-            return websiteStore.countWebsite();
-        } catch (Exception e) {
-            LOGGER.error("Failed to count website", e);
             throw new YoggException(e);
         }
     }
@@ -118,7 +75,7 @@ public class WebsiteServiceImpl implements WebsiteService {
             if (CollectionUtils.isEmpty(websites)) {
                 return;
             }
-            websiteStore.insertKeyWebsite(websites);
+            getWebsiteStore().insertKeyWebsite(websites);
         } catch (Exception e) {
             LOGGER.error("Failed to insert key websites", e);
             throw new YoggException(e);
@@ -150,7 +107,7 @@ public class WebsiteServiceImpl implements WebsiteService {
             if (CollectionUtils.isEmpty(websites)) {
                 return;
             }
-            websiteStore.replaceKeyWebsite(websites);
+            getWebsiteStore().replaceKeyWebsite(websites);
         } catch (Exception e) {
             LOGGER.error("Failed to replace key websites", e);
             throw new YoggException(e);
@@ -160,7 +117,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<Website> fetchKeyWebsite(Pagination pagination) {
         try {
-            return websiteStore.fetchKeyWebsite(pagination);
+            return getWebsiteStore().fetchKeyWebsite(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch key website", e);
             throw new YoggException(e);
@@ -170,7 +127,7 @@ public class WebsiteServiceImpl implements WebsiteService {
     @Override
     public List<String> fetchKeyWebsiteUrls(Pagination pagination) {
         try {
-            return websiteStore.fetchKeyWebsiteUrl(pagination);
+            return getWebsiteStore().fetchKeyWebsiteUrl(pagination);
         } catch (Exception e) {
             LOGGER.error("Failed to fetch key website urls", e);
             throw new YoggException(e);
@@ -179,7 +136,7 @@ public class WebsiteServiceImpl implements WebsiteService {
 
     public long countKeyWebsite() {
         try {
-            return websiteStore.countKeyWebsite();
+            return getWebsiteStore().countKeyWebsite();
         } catch (Exception e) {
             LOGGER.error("Failed to count key website.", e);
             throw new YoggException(e);
@@ -187,9 +144,15 @@ public class WebsiteServiceImpl implements WebsiteService {
     }
 
     public void shutdown() {
-        websiteStore.shutdown();
+        getWebsiteStore().shutdown();
     }
 
-
+    private WebsiteStore getWebsiteStore() {
+        WebsiteStore websiteStore = websiteStoreFactory.getInstance(config.getDataSource().getDataSourceType());
+        if (websiteStore == null) {
+            websiteStore = websiteStoreFactory.getInstance(DataSourceType.DATABASE);
+        }
+        return websiteStore;
+    }
 
 }

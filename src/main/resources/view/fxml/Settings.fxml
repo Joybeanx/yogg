@@ -168,18 +168,18 @@
                 </TabPane>
                 <Pane prefHeight="200.0" prefWidth="625.0">
                     <children>
-                        <Button layoutX="455.0" layoutY="165.0" mnemonicParsing="false" text="Cancel">
+                        <Button layoutX="455.0" layoutY="150.0" mnemonicParsing="false" text="Cancel">
                             <graphic>
-                                <ImageView fitHeight="18.0" fitWidth="18.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0">
                                     <image>
                                         <Image url="/view/image/cancel.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button layoutX="372.0" layoutY="165.0" mnemonicParsing="false" onAction="#saveSettings" text="Apply">
+                        <Button layoutX="372.0" layoutY="150.0" mnemonicParsing="false" onAction="#saveSettings" text="Apply">
                             <graphic>
-                                <ImageView fitHeight="18.0" fitWidth="18.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0">
                                     <image>
                                         <Image url="/view/image/apply.png" />
                                     </image>
