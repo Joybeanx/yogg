@@ -1,9 +1,3 @@
-CREATE TABLE IF NOT EXISTS website (
-  url VARCHAR(255) COMMENT 'website url',
-  PRIMARY KEY (url)
-);
-COMMENT ON TABLE website IS 'Tale stores website from which Yogg can take';
-
 CREATE TABLE IF NOT EXISTS key_website (
   url VARCHAR(255) COMMENT 'key website url',
   PRIMARY KEY (url)

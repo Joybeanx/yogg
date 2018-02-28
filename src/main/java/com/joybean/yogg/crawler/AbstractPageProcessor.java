@@ -27,6 +27,10 @@ public abstract class AbstractPageProcessor implements PageProcessor {
                 .setRetryTimes(crawlerDataSource.getRetryTimes()).setCycleRetryTimes(crawlerDataSource.getCycleRetryTimes()).setRetrySleepTime(crawlerDataSource.getRetrySleepTime())
                 .setSleepTime(crawlerDataSource.getSleepTime()).setTimeOut(crawlerDataSource.getTimeout());
 
+        setProxy();
+    }
+
+    public void setProxy() {
         Proxy proxy = config.getProxy();
         if (proxy != null && !Proxy.Type.DIRECT.equals(proxy.getType())) {
             String proxyHost = proxy.getHost();

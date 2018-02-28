@@ -69,6 +69,10 @@ public class InstantTaskController extends SplitPane implements Initializable {
         Task task = createTask(targets);
         javafx.concurrent.Task jfxTask = JFXUtils.newJFXTask(() -> {
             logs.clear();
+            //Clear main task report before main task starts
+            if (Task.TASK_ID_MAIN.equals(task.getTaskId())) {
+                reportService.clearTaskReport(Task.TASK_ID_MAIN);
+            }
             TaskReport taskReport = taskService.startTask(task);
             return taskReport;
         });

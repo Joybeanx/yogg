@@ -38,7 +38,7 @@ public class ClickSendButtonAction extends ClickAction {
                     HtmlElement newElement = event.getHtmlElement();
                     String newValue = newElement.getAttribute(attrName);
                     LOGGER.info("attribute[{}] chang detected for {}:[{}] =======> [{}]", attrName, newElement, oldValue, newValue);
-                    putVariable(STATE_MACHINE_VARIABLE_IS_SEND_BTN_CHANGED, true, context);
+                    //putVariable(STATE_MACHINE_VARIABLE_IS_SEND_BTN_CHANGED, true, context);
                 }
 
                 @Override
@@ -58,8 +58,8 @@ public class ClickSendButtonAction extends ClickAction {
     protected void onAfter(StateContext<String, String> context) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Boolean sendButtonChanged = getVariable(STATE_MACHINE_VARIABLE_IS_SEND_BTN_CHANGED, context);
         String smsRequestUrl = getRecordProperty(RECORD_PROPERTY_SMS_REQUEST_URL, context);
-        //We consider the sending is successful if sending button status changes and a valid SMS request url is detected after clicking sending button
-        if (sendButtonChanged != null && sendButtonChanged && smsRequestUrl != null) {
+        //We consider the sending is successful if a valid SMS request url is detected after clicking sending button
+        if (smsRequestUrl != null) {
             updateRecordProperty(RECORD_PROPERTY_STATUS, RecordStatus.SUCCESS, context);
             ((LinkedList<String>) getVariable(STATE_MACHINE_INPUT_TARGET_PHONE_NUMBER, context)).pop();
             LOGGER.info("Succeed in sending SMS,request url:{}", smsRequestUrl);

@@ -4,6 +4,7 @@ import com.google.common.net.InetAddresses;
 import com.joybean.yogg.config.IDataSource;
 import com.joybean.yogg.config.Proxy;
 import com.joybean.yogg.config.YoggConfig;
+import com.joybean.yogg.crawler.AbstractPageProcessor;
 import com.joybean.yogg.datasource.*;
 import com.joybean.yogg.report.controller.ReportController;
 import com.joybean.yogg.settings.service.SettingService;
@@ -26,6 +27,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
@@ -96,6 +98,7 @@ public class SettingsController extends SplitPane implements Initializable {
      * Map of proxy type and corresponding radio button on page
      */
     private final Map<Proxy.Type, RadioButton> proxyTypeRadioMap = new HashMap<>();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

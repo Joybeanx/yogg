@@ -55,6 +55,9 @@ public class DefaultWebsiteCrawler implements WebsiteCrawler {
                 public void onError(Request request) {
                     //TODO notify UI
                     LOGGER.error("Crawler execution error while processing {}", request);
+                    if(Arrays.asList(startUrls).contains(request.getUrl())){
+                        spider.stop();
+                    }
                 }
             }));
             spider.start();

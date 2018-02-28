@@ -91,13 +91,7 @@ public class CrawlerWebsiteStore extends AbstractWebsiteStore {
             return websites;
         }
         while (websites.size() < maxNum && Spider.Status.Stopped != spider.getStatus()) {
-            try {
-                websites.add(queue.take());
-                queue.drainTo(websites, maxNum - websites.size());
-            } catch (InterruptedException e) {
-                LOGGER.error("Failed to fetch website", e);
-                throw new YoggException(e);
-            }
+                queue.drainTo(websites, maxNum);
         }
         return websites;
     }
