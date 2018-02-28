@@ -63,7 +63,7 @@ Go to the [release page](https://github.com/Joybeanx/yogg/releases) to download 
         - start url: the url with which crawler starts to collect website
     + File: supply website stored in file
         - file path: the local website file
-    + Database:you should execute [SQL Script](scripts "scripts") to initialize your database first
+    + Database: supply website stored in database:[website].[url]
         - type: the data source type,currently only supports MySQL
         - username: the username of database
         - password: the password of database
