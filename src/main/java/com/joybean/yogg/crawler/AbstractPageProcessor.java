@@ -39,6 +39,8 @@ public abstract class AbstractPageProcessor implements PageProcessor {
                         new HttpHost(proxyHost,
                                 Integer.parseInt(proxy.getPort())));
             }
+        } else {
+            site.setHttpProxy(null);
         }
     }
 
