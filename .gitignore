@@ -1,10 +1,7 @@
 #yogg
-/report
 temp/
 logs/
 settings.json
-task.json
-key_websites.kw
 
 #rebel
 rebel.xml
