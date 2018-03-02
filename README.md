@@ -8,7 +8,7 @@ Yogg
 Overview
 --------
 A simple,extensible SMS bomber written in Java.
-Yogg takes advantage of SMS Gateway used by website to send verification code to target phone number.
+Yogg exploits the SMS Gateway of website to send verification code to target phone number.
 A website store is necessary to launch it.Fetching every website from the website store,Yogg simulate manual operations on the website for the purpose of requesting a SMS sent to the target phone number as far as possible.
 
 ![overview](docs/img/overview.gif "Yogg overview")
@@ -43,10 +43,13 @@ Quick start
 -----------
 ### Prerequisite
 
-The only requirement to run Yogg is to have the Java Development Kit (JDK)
-version 8 or above installed on your system which you can download from the below link.
++ The main requirement to run Yogg is to have the Java Development Kit (JDK)
+version 8 or above installed on your system which you can download from
+ [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-[JDK download](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
++ Install [tesseract](https://github.com/tesseract-ocr/tesseract/wiki) 3.05.01 
+for captcha recognition,make sure the TESSDATA_PREFIX environment variable 
+is set to the parent directory of your "tessdata" directory.
 
 ### Download
 Go to the [release page](https://github.com/Joybeanx/yogg/releases) to download latest executable jar.
