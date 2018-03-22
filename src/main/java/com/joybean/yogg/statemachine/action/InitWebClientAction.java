@@ -27,7 +27,7 @@ public class InitWebClientAction extends AbstractAction {
 
     @Override
     protected void doExecute(StateContext<String, String> context) throws Exception {
-        final WebClient webClient = HtmlUnitUtils.buildWebClient(config.getTimeout(),config.getProxy());
+        final WebClient webClient = HtmlUnitUtils.buildWebClient(config.getTimeout(), config.getProxy());
         putVariable(STATE_MACHINE_VARIABLE_WEB_CLIENT, webClient, context);
         final SMSSendingRecord record = getVariable(STATE_MACHINE_OUTPUT_RECORD, context);
         LinkedList<String> targetPhoneNumberList = getVariable(STATE_MACHINE_INPUT_TARGET_PHONE_NUMBER, context);
@@ -36,8 +36,8 @@ public class InitWebClientAction extends AbstractAction {
                     throws IOException {
                 String requestUrl;
                 String currentPhoneNumber = targetPhoneNumberList.peek();
-                //if current request matches sms request format,set it to record temporally,but may be unset it later because of other reasons
-                if ((requestUrl = matches(request, currentPhoneNumber)) != null) {
+                //if current request matches sms request format,set it to record
+                if (record.getSmsRequestUrl() == null && (requestUrl = matches(request, currentPhoneNumber)) != null) {
                     record.setSmsRequestUrl(requestUrl.replace(currentPhoneNumber, STRING_PLACEHOLDER));
                 }
                 return super.getResponse(request);
@@ -47,6 +47,9 @@ public class InitWebClientAction extends AbstractAction {
     }
 
     private String matches(WebRequest request, String currentPhoneNumber) {
+        if (currentPhoneNumber == null) {
+            return null;
+        }
         String requestUrl = request.getUrl().toString();
         String requestBody = request.getRequestBody();
         if (requestUrl.contains(currentPhoneNumber)) {
