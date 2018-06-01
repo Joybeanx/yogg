@@ -63,6 +63,6 @@ public class ScheduledTaskExecutor extends AbstractTaskExecutor {
 
     @Override
     public boolean accept(String taskId) {
-        return scheduledTaskMap.get(taskId) != null;
+        return taskId != null && scheduledTaskMap.get(taskId) != null;
     }
 }
